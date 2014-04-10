@@ -38,6 +38,14 @@ module.exports = (grunt) ->
           }
         ]
 
+    stylesheets_path: '<%= build_path %>/dist/public/stylesheets'
+    less:
+      main:
+        options:
+          paths: '<%= stylesheets_path %>'
+        files:
+          '<%= stylesheets_path %>/index.css': '<%= stylesheets_path %>/index.less'
+
     shell:
       meteor:
         command: 'mrt'
@@ -52,10 +60,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-shell'
 
 
   # tasks
-  grunt.registerTask 'build', [ 'clean', 'copy' ]
+  grunt.registerTask 'build', [ 'clean', 'copy', 'less' ]
   grunt.registerTask 'run', [ 'shell:meteor' ]
   grunt.registerTask 'default', [ 'build', 'run' ]
