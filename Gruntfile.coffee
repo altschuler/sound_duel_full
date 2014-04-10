@@ -1,48 +1,61 @@
 # Gruntfile.coffee
 
-# constants
-BUILD_PATH = 'build'
-SRC_PATH = 'src'
-CORE_PATH = 'lib/core/app'
-
-# grunt
 module.exports = (grunt) ->
 
   # init
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
-    clean: [BUILD_PATH]
+    build_path: 'build'
+    src_path:   'src'
+    core_path:  'lib/core'
+
+    clean: [ '<%= build_path %>' ]
 
     copy:
-      main:
+      dist:
         files: [
           # lib/core
           {
             expand: true
-            cwd: "#{CORE_PATH}/"
-            src: ['**', '!**/smart.json', '!**/smart.lock', '!**/packages.json']
-            dest: "#{BUILD_PATH}/"
-            filter: 'isFile'
+            cwd: '<%= core_path %>/app'
+            src: [
+              '**'
+              'packages'
+              '.meteor/**'
+              '!smart.lock'
+              '!packages.json'
+            ]
+            dest: '<%= build_path %>/dist'
           }
           # src
           {
             expand: true
-            cwd: "#{SRC_PATH}/"
+            cwd: '<%= src_path %>/'
             src: '**'
-            dest: "#{BUILD_PATH}/"
+            dest: '<%= build_path %>/dist'
             filter: 'isFile'
           }
         ]
+
+    shell:
+      meteor:
+        command: 'mrt'
+        options:
+          stdout: true
+          stderr: true
+          execOptions:
+            cwd: '<%= build_path %>/dist'
 
 
   # plugins
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-shell'
 
 
   # tasks
-  grunt.registerTask 'build', ['clean', 'copy']
-  grunt.registerTask 'run', ['clean', 'copy']
-  grunt.registerTask 'default', ['build']
+  grunt.registerTask 'build', [ 'clean', 'copy' ]
+  grunt.registerTask 'run', [ 'shell:meteor' ]
+  grunt.registerTask 'default', [ 'build', 'run' ]
