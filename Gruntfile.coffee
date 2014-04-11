@@ -38,6 +38,13 @@ module.exports = (grunt) ->
           }
         ]
 
+    coffeelint:
+      build:
+        files:
+          src: '<%= build_path %>/**/*.coffee'
+        options:
+          configFile: 'coffeelint.json'
+
     stylesheets_path: '<%= build_path %>/dist/public/stylesheets'
     less:
       main:
@@ -60,11 +67,13 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-shell'
 
 
   # tasks
-  grunt.registerTask 'build', [ 'clean', 'copy', 'less' ]
+  grunt.registerTask 'lint', [ 'coffeelint' ]
+  grunt.registerTask 'build', [ 'clean', 'copy', 'lint', 'less' ]
   grunt.registerTask 'run', [ 'shell:meteor' ]
   grunt.registerTask 'default', [ 'build', 'run' ]
