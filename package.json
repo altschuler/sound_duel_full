@@ -1,6 +1,8 @@
 {
-  "name": "Sound-Duel-VM",
-  "version": "0.1.0",
+  "name": "Sound-Duel-VM-Football",
+  "description": "The VM/Football specific extensions to the Sound-Duel-Core",
+  "author": "BIT BLUEPRINT <hello@bitblueprint.com>",
+  "repository": "git@github.com:bitblueprint/Sound-Duel-VM-Football.git",
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-contrib-coffee": "^0.10.1",
