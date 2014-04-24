@@ -7,29 +7,37 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON 'package.json'
 
     build_path: 'build'
+    dist_path:  '<%= build_path %>/dist'
+    test_path:  '<%= build_path %>/test'
     src_path:   'src'
     core_path:  'lib/core'
+
+    stylesheets_path: '<%= dist_path %>/public/stylesheets'
+
 
     clean: [ '<%= build_path %>' ]
 
     copy:
-      dist:
+      src:
         files: [
-          # lib/core
-          {
+            expand: true
+            cwd: '<%= src_path %>/'
+            src: '**'
+            dest: '<%= dist_path %>'
+            filter: 'isFile'
+        ]
+      core:
+        files: [
             expand: true
             cwd: '<%= core_path %>/app'
             src: [
-              '**'
-              'packages'
               '.meteor/**'
-              '!smart.lock'
-              '!packages.json'
+              'client/**'
+              'lib/**'
+              'smart.json'
             ]
-            dest: '<%= build_path %>/dist'
-          }
-          # src
-          {
+            dest: '<%= dist_path %>'
+        ]
             expand: true
             cwd: '<%= src_path %>/'
             src: '**'
@@ -38,6 +46,14 @@ module.exports = (grunt) ->
           }
         ]
 
+    watch:
+      dist:
+        files: ['<%= src_path %>/**']
+        tasks: [ 'copy:src', 'less', 'coffeelint' ]
+      core:
+        files: ['<%= core_path %>/**']
+        tasks: [ 'copy:core', 'coffeelint' ]
+
     coffeelint:
       build:
         files:
@@ -45,7 +61,6 @@ module.exports = (grunt) ->
         options:
           configFile: 'coffeelint.json'
 
-    stylesheets_path: '<%= build_path %>/dist/public/stylesheets'
     less:
       main:
         options:
@@ -53,27 +68,38 @@ module.exports = (grunt) ->
         files:
           '<%= stylesheets_path %>/index.css': '<%= stylesheets_path %>/index.less'
 
-    shell:
-      meteor:
-        command: 'mrt'
+    bgShell:
+      update:
+        cmd: 'mrt update'
+        bg: false
         options:
           stdout: true
           stderr: true
-          execOptions:
-            cwd: '<%= build_path %>/dist'
+        execOpts:
+          cwd: '<%= dist_path %>'
+      run:
+        cmd: 'meteor'
+        bg: true
+        options:
+          stdout: true
+          stderr: true
+        execOpts:
+          cwd: '<%= dist_path %>'
 
 
   # plugins
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-copy'
-  grunt.loadNpmTasks 'grunt-coffeelint'
+  grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-less'
-  grunt.loadNpmTasks 'grunt-shell'
+  grunt.loadNpmTasks 'grunt-coffeelint'
+  grunt.loadNpmTasks 'grunt-bg-shell'
 
 
   # tasks
-  grunt.registerTask 'lint', [ 'coffeelint' ]
-  grunt.registerTask 'build', [ 'clean', 'copy', 'lint', 'less' ]
-  grunt.registerTask 'run', [ 'shell:meteor' ]
-  grunt.registerTask 'default', [ 'build', 'run' ]
+  grunt.registerTask 'lint',    [ 'coffeelint' ]
+  grunt.registerTask 'build',   [ 'clean', 'copy:src', 'copy:core', 'lint', 'less' ]
+  grunt.registerTask 'update',  [ 'bgShell:update' ]
+  grunt.registerTask 'run',     [ 'bgShell:run' ]
+  grunt.registerTask 'default', [ 'build', 'update', 'run', 'watch' ]
