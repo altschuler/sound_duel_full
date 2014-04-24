@@ -39,20 +39,23 @@ refreshDb = ->
   console.log "#Questions: #{Questions.find().count()}"
   console.log "#Sounds: #{audioFiles.length}"
 
-
-# initialize
-
-Meteor.startup ->
-  refreshDb()
-
-  # update players to idle with keepalive
-  # and remove long idling players
+# update players to idle with keepalive
+# and remove long idling players
+keepaliveLoop = ->
   Meteor.setInterval( ->
     now = (new Date()).getTime()
     threshold = now - CONFIG.ONLINE_TRESHOLD
 
     # set players to idle
     Meteor.users.update lastKeepalive: { $lt: threshold },
-      $set: { online: false }
+      $set: { 'profile.online': false }
 
   , CONFIG.ONLINE_TRESHOLD)
+
+
+# initialize
+
+Meteor.startup ->
+  refreshDb()
+
+  keepaliveLoop()
