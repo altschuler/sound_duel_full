@@ -38,13 +38,6 @@ module.exports = (grunt) ->
             ]
             dest: '<%= dist_path %>'
         ]
-            expand: true
-            cwd: '<%= src_path %>/'
-            src: '**'
-            dest: '<%= build_path %>/dist'
-            filter: 'isFile'
-          }
-        ]
 
     watch:
       dist:
