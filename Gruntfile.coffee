@@ -38,12 +38,13 @@ module.exports = (grunt) ->
             ]
             dest: '<%= dist_path %>'
         ]
+      tests:
+        files: [
             expand: true
-            cwd: '<%= src_path %>/'
+            cwd: '<%= core_path %>/test'
             src: '**'
-            dest: '<%= build_path %>/dist'
+            dest: '<%= test_path %>'
             filter: 'isFile'
-          }
         ]
 
     watch:
@@ -86,6 +87,40 @@ module.exports = (grunt) ->
         execOpts:
           cwd: '<%= dist_path %>'
 
+    mochaSelenium:
+      options:
+        #globals: ['hasCert']
+        hello: 'asdf'
+        usePromises: true
+      chrome:
+        src: [ '<%= test_path %>/**/lobby_spec.coffee' ]
+        options:
+          browserName: 'chrome'
+      phantom:
+        src: [ '<%= test_path %>/**/*_spec.coffee' ]
+        options:
+          browserName: 'phantomjs'
+
+    # mochawebdriver:
+    #   options:
+    #     timeout: 1000 * 60
+    #     reporter: 'spec'
+    #     usePromises: true
+    #   phantom:
+    #     src: ['<%= build_path %>/test/**/sanity.js']
+    #     options:
+    #       usePhantom: true
+    #   chrome:
+    #     src: ['<%= build_path %>/test/**/sanity.js']
+    #     browsers: [ { browserName: 'chrome' } ]
+
+    # webdriver:
+    #   options:
+    #     desiredCapabilities:
+    #       browserName: 'chrome'
+    #   chrome:
+    #     tests: [ '<%= build_path %>/test/**/challenge_spec.coffee']
+
 
   # plugins
   grunt.loadNpmTasks 'grunt-contrib-coffee'
@@ -95,6 +130,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-bg-shell'
+  grunt.loadNpmTasks 'grunt-mocha-selenium'
+  # grunt.loadNpmTasks 'grunt-mocha-webdriver'
+  # grunt.loadNpmTasks 'grunt-webdriver'
 
 
   # tasks
@@ -102,4 +140,6 @@ module.exports = (grunt) ->
   grunt.registerTask 'build',   [ 'clean', 'copy:src', 'copy:core', 'lint', 'less' ]
   grunt.registerTask 'update',  [ 'bgShell:update' ]
   grunt.registerTask 'run',     [ 'bgShell:run' ]
+  # grunt.registerTask 'test',  [ 'copy:tests', 'bgShell:meteor', 'webdriver' ] # webdriver
+  grunt.registerTask 'test',    [ 'copy:tests', 'run', 'mochaSelenium:chrome' ] # mochaSelenium
   grunt.registerTask 'default', [ 'build', 'update', 'run', 'watch' ]

@@ -36,28 +36,36 @@ insertChallenge = ({
 
 Meteor.methods
   keepalive: (playerId) ->
-    # check playerId
-    return unless playerId
-
-    Meteor.users.update playerId,
-      $set:
-        online: true
-        lastKeepalive: (new Date()).getTime()
+    Meteor.users.update playerId, $set:
+      online: true
+      lastKeepalive: (new Date()).getTime()
 
 
-  newPlayer: (name) ->
-    unless name
-      throw new Meteor.Error 409, 'Username not set'
+  newPlayer: (currentId, username) ->
+    console.log 'newPlayer'
+
+    # check for
+    # username not set
+    unless username
+      throw new Meteor.Error 409, 'Username not set.'
     # username taken
-    else if Meteor.users.find( username: name ).count() > 0
-      throw new Meteor.Error 409, 'Username taken'
+    else if Meteor.users.find(
+      username: username
+      $ne: { _id: currentId }
+    ).count() > 0
+      throw new Meteor.Error 409, 'Username already taken.'
 
-    id = Meteor.users.insert { username: name }
-
-    Meteor.users.update id,
-      $set:
-        'profile.online': true
-        'profile.highscoreIds': []
+    if currentId?
+      console.log 'newPlayer: update'
+      Meteor.users.update currentId, $set: { username: username }
+      id = currentId
+    else
+      console.log 'newPlayer: insert'
+      id = Meteor.users.insert
+        username: username
+        profile:
+          online: true
+          highscoreIds: []
 
     id
 
