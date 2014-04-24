@@ -3,3 +3,5 @@ build
 # npm
 npm-debug.log
 node_modules
+
+.vagrant/
