@@ -53,9 +53,15 @@ keepaliveLoop = ->
   , CONFIG.ONLINE_TRESHOLD)
 
 
+Meteor.methods
+  keepalive: (playerId) ->
+    Meteor.users.update playerId, $set:
+      online: true
+      lastKeepalive: (new Date()).getTime()
+
+
 # initialize
 
 Meteor.startup ->
   refreshDb()
-
   keepaliveLoop()
