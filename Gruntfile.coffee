@@ -19,33 +19,27 @@ module.exports = (grunt) ->
 
     copy:
       src:
-        files: [
-            expand: true
-            cwd: '<%= src_path %>/'
-            src: '**'
-            dest: '<%= dist_path %>'
-            filter: 'isFile'
-        ]
+        expand: true
+        cwd: '<%= src_path %>/'
+        src: '**'
+        dest: '<%= dist_path %>'
+        filter: 'isFile'
       core:
-        files: [
-            expand: true
-            cwd: '<%= core_path %>/app'
-            src: [
-              '.meteor/**'
-              'client/**'
-              'lib/**'
-              'smart.json'
-            ]
-            dest: '<%= dist_path %>'
+        expand: true
+        cwd: '<%= core_path %>/app'
+        src: [
+          '.meteor/**'
+          'client/**'
+          'lib/**'
+          'smart.json'
         ]
+        dest: '<%= dist_path %>'
       tests:
-        files: [
-            expand: true
-            cwd: '<%= core_path %>/test'
-            src: '**'
-            dest: '<%= test_path %>'
-            filter: 'isFile'
-        ]
+        expand: true
+        cwd: '<%= core_path %>/test'
+        src: '**'
+        dest: '<%= test_path %>'
+        filter: 'isFile'
 
     watch:
       dist:
