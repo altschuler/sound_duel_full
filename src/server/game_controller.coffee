@@ -1,12 +1,12 @@
-# app/server/game.coffee
+# app/server/game_controller.coffee
 
 # helpers
 
 findQuestions = ->
   # TODO: avoid getting the same questions
   Questions.find({},
-    limit: CONFIG.NUMBER_OF_QUESTION
-    # limit: 1 # For development
+    # limit: CONFIG.NUMBER_OF_QUESTION
+    limit: 2 # For development
     fields: { _id: 1 }
   ).fetch()
 
@@ -35,45 +35,13 @@ insertChallenge = ({
 # methods
 
 Meteor.methods
-  keepalive: (playerId) ->
-    Meteor.users.update playerId, $set:
-      online: true
-      lastKeepalive: (new Date()).getTime()
-
-
-  newPlayer: (currentId, username) ->
-    console.log 'newPlayer'
-
-    # check for
-    # username not set
-    unless username
-      throw new Meteor.Error 409, 'Username not set.'
-    # username taken
-    else if Meteor.users.find(
-      username: username
-      $ne: { _id: currentId }
-    ).count() > 0
-      throw new Meteor.Error 409, 'Username already taken.'
-
-    if currentId?
-      console.log 'newPlayer: update'
-      Meteor.users.update currentId, $set: { username: username }
-      id = currentId
-    else
-      console.log 'newPlayer: insert'
-      id = Meteor.users.insert
-        username: username
-        profile:
-          online: true
-          highscoreIds: []
-
-    id
-
-
   newGame: (playerId, {challengeeId, acceptChallengeId}) ->
-    # cannot challenge and answer challenge at same time
+    unless Meteor.users.find(playerId).count() is 1
+      throw new Meteor.Error 'player not found'
+    # cannot challenge and answer challenge at the same time
     if challengeeId and acceptChallengeId
-      throw new Meteor.Error
+      throw new Meteor.Error 'cannot challenge and accept
+       challenge at the same time'
 
     # if accepting challenge, find the game
     if acceptChallengeId
@@ -101,7 +69,9 @@ Meteor.methods
 
   endGame: (playerId) ->
     player = Meteor.users.findOne playerId
+    throw new Meteor.Error 'player not found' unless player?
     game = Games.findOne player.profile.currentGameId
+    throw new Meteor.Error 'game not found' unless game?
 
     # calculate score
     score = 0
@@ -112,7 +82,7 @@ Meteor.methods
         correctAnswers++
         score += a.points
 
-    # update highscore
+    # insert highscore
     highscoreId = Highscores.insert
       gameId: game._id
       playerId: playerId
