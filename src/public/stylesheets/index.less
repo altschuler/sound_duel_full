@@ -32,11 +32,22 @@ body {
   left: @banner-margin;
   top: @banner-margin;
 
-  width: 100px;
+  img {
+    width: 100px;
+  }
 
   img {
     content:url("/images/dr-logo.svg");
   }
+}
+
+#heading {
+  text-align: center;
+}
+
+#username-form {
+  margin: auto;
+  max-width: 300px;
 }
 
 #highscores {
@@ -56,4 +67,8 @@ body {
 
 audio.asset, .assets {
   display: none;
+}
+
+#alternative-container {
+  margin: 14px;
 }
