@@ -5,8 +5,8 @@
 findQuestions = ->
   # TODO: avoid getting the same questions
   Questions.find({},
-    # limit: CONFIG.NUMBER_OF_QUESTION
-    limit: 2 # For development
+    limit: CONFIG.NUMBER_OF_QUESTION
+    # limit: 2 # For development
     fields: { _id: 1 }
   ).fetch()
 
