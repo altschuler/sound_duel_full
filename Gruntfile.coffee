@@ -84,12 +84,18 @@ module.exports = (grunt) ->
           cwd: '<%= dist_path %>'
 
     webdriver:
+      tests: "<%= test_path %>/**/#{grunt.option('spec')}_spec.coffee" || '<%= test_path %>/**/*_spec.coffee'
+      options:
+        # logLevel: 'verbose'
+        timeout: 50000
       chrome:
-        tests: [ '<%= test_path %>/**/*_spec.coffee' ]
+        tests: [ '<%= webdriver.tests %>' ]
         options:
-          # logLevel: 'verbose'
-          timeout: 50000
           desiredCapabilities: { browserName: 'chrome' }
+      phantomjs:
+        tests: [ '<%= webdriver.tests %>' ]
+        options:
+          desiredCapabilities: { browserName: 'phantomjs' }
 
 
   # plugins
@@ -108,5 +114,8 @@ module.exports = (grunt) ->
   grunt.registerTask 'build',   [ 'clean:build', 'copy:src', 'copy:core', 'lint', 'less' ]
   grunt.registerTask 'update',  [ 'bgShell:update' ]
   grunt.registerTask 'run',     [ 'bgShell:run' ]
-  grunt.registerTask 'test',    [ 'clean:tests', 'copy:tests', 'webdriver:chrome' ]
+
+  browser = grunt.option('browser') || 'chrome'
+  grunt.registerTask 'test',    [ 'clean:tests', 'copy:tests', 'webdriver:' + browser ]
+
   grunt.registerTask 'default', [ 'build', 'update', 'run', 'watch' ]
