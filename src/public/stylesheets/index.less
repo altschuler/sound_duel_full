@@ -1,6 +1,11 @@
 /* app/client/index.less */
 
+// variables
+
 @banner-margin: 15px;
+
+
+// rules
 
 html { min-height: 100%; }
 
@@ -38,6 +43,15 @@ body {
   position: absolute;
   top: @banner-margin;
   right: @banner-margin;
+}
+
+#highscore-table {
+  thead {
+    background-color: #f5f5f5;
+  }
+  tbody {
+    background: white;
+  }
 }
 
 audio.asset, .assets {
