@@ -15,7 +15,9 @@ module.exports = (grunt) ->
     stylesheets_path: '<%= dist_path %>/public/stylesheets'
 
 
-    clean: [ '<%= build_path %>' ]
+    clean:
+      build: [ '<%= build_path %>' ]
+      tests: [ '<%= test_path %>' ]
 
     copy:
       src:
@@ -46,7 +48,7 @@ module.exports = (grunt) ->
         files: ['<%= src_path %>/**']
         tasks: [ 'copy:src', 'less', 'coffeelint' ]
       core:
-        files: ['<%= core_path %>/**']
+        files: ['<%= core_path %>/app/**']
         tasks: [ 'copy:core', 'coffeelint' ]
 
     coffeelint:
@@ -81,39 +83,13 @@ module.exports = (grunt) ->
         execOpts:
           cwd: '<%= dist_path %>'
 
-    mochaSelenium:
-      options:
-        #globals: ['hasCert']
-        hello: 'asdf'
-        usePromises: true
+    webdriver:
       chrome:
-        src: [ '<%= test_path %>/**/lobby_spec.coffee' ]
+        tests: [ '<%= test_path %>/**/*_spec.coffee' ]
         options:
-          browserName: 'chrome'
-      phantom:
-        src: [ '<%= test_path %>/**/*_spec.coffee' ]
-        options:
-          browserName: 'phantomjs'
-
-    # mochawebdriver:
-    #   options:
-    #     timeout: 1000 * 60
-    #     reporter: 'spec'
-    #     usePromises: true
-    #   phantom:
-    #     src: ['<%= build_path %>/test/**/sanity.js']
-    #     options:
-    #       usePhantom: true
-    #   chrome:
-    #     src: ['<%= build_path %>/test/**/sanity.js']
-    #     browsers: [ { browserName: 'chrome' } ]
-
-    # webdriver:
-    #   options:
-    #     desiredCapabilities:
-    #       browserName: 'chrome'
-    #   chrome:
-    #     tests: [ '<%= build_path %>/test/**/challenge_spec.coffee']
+          # logLevel: 'verbose'
+          timeout: 50000
+          desiredCapabilities: { browserName: 'chrome' }
 
 
   # plugins
@@ -124,16 +100,13 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-bg-shell'
-  grunt.loadNpmTasks 'grunt-mocha-selenium'
-  # grunt.loadNpmTasks 'grunt-mocha-webdriver'
-  # grunt.loadNpmTasks 'grunt-webdriver'
+  grunt.loadNpmTasks 'grunt-webdriver'
 
 
   # tasks
   grunt.registerTask 'lint',    [ 'coffeelint' ]
-  grunt.registerTask 'build',   [ 'clean', 'copy:src', 'copy:core', 'lint', 'less' ]
+  grunt.registerTask 'build',   [ 'clean:build', 'copy:src', 'copy:core', 'lint', 'less' ]
   grunt.registerTask 'update',  [ 'bgShell:update' ]
   grunt.registerTask 'run',     [ 'bgShell:run' ]
-  # grunt.registerTask 'test',  [ 'copy:tests', 'bgShell:meteor', 'webdriver' ] # webdriver
-  grunt.registerTask 'test',    [ 'copy:tests', 'run', 'mochaSelenium:chrome' ] # mochaSelenium
+  grunt.registerTask 'test',    [ 'clean:tests', 'copy:tests', 'webdriver:chrome' ]
   grunt.registerTask 'default', [ 'build', 'update', 'run', 'watch' ]
