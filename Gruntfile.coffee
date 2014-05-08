@@ -84,16 +84,21 @@ module.exports = (grunt) ->
           cwd: '<%= dist_path %>'
 
     webdriver:
-      tests: "<%= test_path %>/**/#{grunt.option('spec')}_spec.coffee" || '<%= test_path %>/**/*_spec.coffee'
+      tests: ->
+        spec = grunt.option 'spec'
+        if spec?
+          "<%= test_path %>/**/#{spec}_spec.coffee"
+        else
+          '<%= test_path %>/**/*_spec.coffee'
       options:
         # logLevel: 'verbose'
         timeout: 50000
       chrome:
-        tests: [ '<%= webdriver.tests %>' ]
+        tests: [ '<%= webdriver.tests() %>' ]
         options:
           desiredCapabilities: { browserName: 'chrome' }
       phantomjs:
-        tests: [ '<%= webdriver.tests %>' ]
+        tests: [ '<%= webdriver.tests() %>' ]
         options:
           desiredCapabilities: { browserName: 'phantomjs' }
 
