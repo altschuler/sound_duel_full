@@ -28,8 +28,8 @@ Sound-Duel-VM-Football is a audio-based pop quiz games, using the [Sound-Duel-Co
 
         # git clone https://github.com/bitblueprint/Sound-Duel-VM-Football.git
         # cd Sound-Duel-VM-Football
-        # git submodules init
-        # git submodules update
+        # git submodule init
+        # git submodule update
 
  * Install dependencies with `npm`:
 
