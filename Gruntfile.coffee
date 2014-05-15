@@ -32,6 +32,7 @@ module.exports = (grunt) ->
         src: [
           '.meteor/**'
           'client/**'
+          'server/**'
           'lib/**'
           'smart.json'
         ]
