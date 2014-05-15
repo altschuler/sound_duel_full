@@ -35,13 +35,16 @@ insertChallenge = ({
 # methods
 
 Meteor.methods
-  newGame: (playerId, {challengeeId, acceptChallengeId}) ->
+  newGame: (playerId, {challengeeId, acceptChallengeId, challengeeEmail}) ->
     unless Meteor.users.find(playerId).count() is 1
       throw new Meteor.Error 'player not found'
     # cannot challenge and answer challenge at the same time
-    if challengeeId and acceptChallengeId
+    if (challengeeId and acceptChallengeId) or
+    (challengeeEmail and acceptChallengeId)
       throw new Meteor.Error 'cannot challenge and accept
        challenge at the same time'
+    if challengeeId and challengeeEmail
+      throw new Meteor.Error 'cannot challenge both player and email'
 
     # if accepting challenge, find the game
     if acceptChallengeId
@@ -52,12 +55,13 @@ Meteor.methods
       challengeId = acceptChallengeId
 
     # if challenging, create new game for challengee
-    if challengeeId
+    if challengeeId or challengeeEmail
       challengeeGameId = insertGame()
 
       challengeId = insertChallenge
         playerId: playerId
         challengeeId: challengeeId
+        challengeeEmail: challengeeEmail
         gameId: gameId
         challengeeGameId: challengeeGameId
 
