@@ -9,10 +9,11 @@ refreshDb = ->
 
   # clear database
   # TODO: only for development
-  Meteor.users.remove({})
+  ## Meteor.users.remove({})
   Games.remove({})
   Challenges.remove({})
   Highscores.remove({})
+  Quizzes.remove({})
   Questions.remove({})
   Sounds.remove({})
 
@@ -21,19 +22,33 @@ refreshDb = ->
     ~file.indexOf('.mp3')
 
   # parse questions from sample file
-  sampleQuestions = JSON.parse(Assets.getText CONFIG.SAMPLE_DATA)
+  sampleQuizzes = EJSON.parse(Assets.getText CONFIG.SAMPLE_DATA)
 
   # populate database
-  for sample in sampleQuestions
-    questionId = Questions.insert(sample)
+  for quiz in sampleQuizzes
 
-    # find associated segments
-    segments = audioFiles.filter (file) ->
-      ~file.indexOf(sample.soundfilePrefix)
+    # Insert questions from quiz as separate question objects in database
+    questionIds = []
+    for question in quiz.questions
 
-    soundId = Sounds.insert segments: segments
+      # find associated segments
+      segments = audioFiles.filter (file) ->
+        ~file.indexOf(question.soundfilePrefix)
 
-    Questions.update questionId, $set: { soundId: soundId }
+      soundId = Sounds.insert segments: segments
+      question.soundId = soundId
+
+      # insert question into databse
+      questionId = Questions.insert(question)
+      questionIds.push(questionId)
+
+    # Replace the 'questions' property with the property 'questionIds' that
+    # references the questions ID in the MongoDB
+    delete quiz.questions
+    quiz.questionIds = questionIds
+    quiz.pointsPerQuestion = CONFIG.POINTS_PER_QUESTION
+    questionId = Quizzes.insert(quiz)
+
 
   # print some info
   console.log "#Questions: #{Questions.find().count()}"

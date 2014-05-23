@@ -1,6 +1,6 @@
 {
     "ASSETS_DIR":          "../client/app/audio/"
-  , "SAMPLE_DATA":         "data.json"
+  , "SAMPLE_DATA":         "data.ejson"
 
   , "ONLINE_TRESHOLD":     60000
 

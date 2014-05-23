@@ -38,3 +38,15 @@ Sound-Duel-VM-Football is a audio-based pop quiz games, using the [Sound-Duel-Co
  * Run the app with grunt:
 
         # grunt
+
+
+## How it works
+
+The grunt main task (that is run when simply running `grunt` in this directory)
+merges the `src` directory and the `lib/core/app` directory into a temporary
+directory called `build`. In the `build` directory you can run `meteor` as usual
+-- which exactly what the `grunt` command does after having merged the
+directories.
+
+_Note: DO NOT run `meteor` in any other directory than `build`. Doing so will
+create unwanted files and can break the build step._

@@ -74,4 +74,42 @@ audio.asset, .assets {
 
 #alternative-container {
   margin: 14px;
+  display: none;
 }
+
+
+@-webkit-keyframes countdown-animation {
+  from { font-size: 15em; }
+  to   { font-size: 6em; }
+}
+@-moz-keyframes countdown-animation {
+  from { font-size: 15em; }
+  to   { font-size: 6em; }
+}
+@-o-keyframes countdown-animation {
+  from { font-size: 15em; }
+  to   { font-size: 6em; }
+}
+@keyframes countdown-animation {
+  from { font-size: 15em; }
+  to   { font-size: 6em; }
+}
+
+.sound-duel-countdown {
+  -webkit-animation : countdown-animation 1s ease 4;
+  -moz-animation    : countdown-animation 1s ease 4;
+  -o-animation      : countdown-animation 1s ease 4;
+  animation         : countdown-animation 1s ease 4;
+
+  text-align: center;
+  font-size: 6em;
+
+  height:      300px;
+  line-height: 300px;
+}
+
+
+
+
+
+

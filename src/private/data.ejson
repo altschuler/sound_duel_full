@@ -1,0 +1,120 @@
+[
+  {
+    "name": "Den første quiz",
+    "startDate": { "$date": 1401279401795 },
+    "endDate": { "$date": 2401279401795 },
+    "questions":
+      [
+        {
+          "soundfilePrefix": "EM-Finale_DK-DE",
+          "correctAnswer": "A",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "EM Finale Tyskland 1992"
+              },
+              {
+                  "name": "B",
+                  "text": "VM Finale Brasil 1990"
+              },
+              {
+                  "name": "C",
+                  "text": "EM Semi Tyskland 1983"
+              },
+              {
+                  "name": "D",
+                  "text": "EM Semi Tyskland 2000"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "EM-Kval_DK-GB",
+          "correctAnswer": "B",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "VM Finale Brasil 1990"
+              },
+              {
+                  "name": "B",
+                  "text": "EM Kval. England 1983"
+              },
+              {
+                  "name": "C",
+                  "text": "EM Semi Tyskland 1983"
+              },
+              {
+                  "name": "D",
+                  "text": "EM Semi Tyskland 2000"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "EM-Semi_DK-NL",
+          "correctAnswer": "C",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "EM Finale Tyskland 1983"
+              },
+              {
+                  "name": "B",
+                  "text": "VM Finale Brasil 1990"
+              },
+              {
+                  "name": "C",
+                  "text": "EM Semi Holland 1992"
+              },
+              {
+                  "name": "D",
+                  "text": "EM Semi Tyskland 2000"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "OL-Semi_DK-HU",
+          "correctAnswer": "D",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "EM Finale Tyskland 1983"
+              },
+              {
+                  "name": "B",
+                  "text": "VM Finale Brasil 1990"
+              },
+              {
+                  "name": "C",
+                  "text": "EM Semi Tyskland 1983"
+              },
+              {
+                  "name": "D",
+                  "text": "OL Semi Ungarn 1960"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "VM-Kvart_DK-BR",
+          "correctAnswer": "A",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "VM Kvart Brasilien 1998"
+              },
+              {
+                  "name": "B",
+                  "text": "VM Finale Brasilien 1990"
+              },
+              {
+                  "name": "C",
+                  "text": "EM Semi Tyskland 1983"
+              },
+              {
+                  "name": "D",
+                  "text": "EM Semi Tyskland 2000"
+              }
+          ]
+        }
+      ]
+  }
+]

@@ -10,9 +10,22 @@ findQuestions = ->
     fields: { _id: 1 }
   ).fetch()
 
-insertGame = ->
+insertGame = (playerId) ->
+  # Find the quiz of the day
+  now = new Date()
+  quiz_of_the_day = Quizzes.find(
+    startDate: {$lt: now}
+    endDate:   {$gt: now}
+  , {limit: 1})
+
+  unless quiz_of_the_day.count() is 1
+    throw new Meteor.Error 'Quiz of the day not found'
+
+  quiz_of_the_day = quiz_of_the_day.fetch()[0]
+
   Games.insert
-    questionIds:       findQuestions()
+    playerId:          playerId
+    quizId:            quiz_of_the_day._id
     pointsPerQuestion: CONFIG.POINTS_PER_QUESTION
     state:             'init'
     currentQuestion:   0
@@ -53,12 +66,12 @@ Meteor.methods
       gameId = Challenges.findOne(acceptChallengeId).challengeeGameId
     # else, create new game
     else
-      gameId = insertGame()
+      gameId = insertGame(playerId)
       challengeId = acceptChallengeId
 
     # if challenging, create new game for challengee
     if challengeeId or challengeeEmail
-      challengeeGameId = insertGame()
+      challengeeGameId = insertGame(challengeeId)
 
       challengeId = insertChallenge
         playerId: playerId
@@ -73,10 +86,8 @@ Meteor.methods
       challengeId: challengeId
     }
 
-  endGame: (playerId) ->
-    player = Meteor.users.findOne playerId
-    throw new Meteor.Error 'player not found' unless player?
-    game = Games.findOne player.profile.currentGameId
+  endGame: (currentGameId) ->
+    game = Games.findOne currentGameId
     throw new Meteor.Error 'game not found' unless game?
 
     # calculate score
@@ -88,17 +99,10 @@ Meteor.methods
         correctAnswers++
         score += a.points
 
-    # insert highscore
-    highscoreId = Highscores.insert
-      gameId: game._id
-      playerId: playerId
-      correctAnswers: correctAnswers
-      score: score
-
     # mark game as finished
-    Games.update game._id, $set: { state: 'finished' }
-
-    # set game id
-    Meteor.users.update playerId,
-      $set: { 'profile.currentGameId': undefined }
-      $addToSet: { 'profile.highscoreIds': highscoreId }
+    Games.update game._id,
+      $set: {
+        state: 'finished'
+        score: score
+        correctAnswers: correctAnswers
+      }
