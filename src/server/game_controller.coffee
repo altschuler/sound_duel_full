@@ -21,12 +21,14 @@ insertGame = ->
 insertChallenge = ({
   playerId,
   challengeeId,
+  challengeeEmail,
   gameId,
   challengeeGameId })->
 
   Challenges.insert
     challengerId:     playerId
     challengeeId:     challengeeId
+    challengeeEmail:  challengeeEmail
     challengerGameId: gameId
     challengeeGameId: challengeeGameId
     notified:         false
