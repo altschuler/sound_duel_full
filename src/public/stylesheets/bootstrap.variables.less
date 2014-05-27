@@ -1,0 +1,17 @@
+// defines where the package is
+// /this file is executed in build/dist/
+@bootstrap3-less-root: "../../packages/bootstrap3-less";
+
+// Import Bootstrap Config Defaults
+// ---------------------------------------
+// (you need these first, to get the default setup for bootstrap)
+
+
+@import "@{bootstrap3-less-root}/lib/less/variables.import.less";
+@import "@{bootstrap3-less-root}/lib/less/mixins.import.less";
+
+// Application Overrides (config)
+// ---------------------------------------
+// (Here you can override any variables defined in the default set above)
+
+@icon-font-path: "@{bootstrap3-less-root}/lib/fonts/";
