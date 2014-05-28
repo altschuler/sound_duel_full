@@ -6,4 +6,7 @@
 
   , "NUMBER_OF_QUESTION":  5
   , "POINTS_PER_QUESTION": 1000
+
+  , "SITE_TITLE": "Målsuppe"
+  , "SITE_EMAIL": "målsuppe@dr.dk"
 }

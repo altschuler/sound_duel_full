@@ -59,8 +59,8 @@ Meteor.methods
       online: true
       lastKeepalive: (new Date()).getTime()
 
-  sendEmail: (to, from, subject, text) ->
-    check([to, from, subject, text], [String])
+  sendEmail: (to, subject, text) ->
+    check([to, subject, text], [String])
 
     # Let other method calls from the same client start running,
     # without waiting for the email sending to complete.
@@ -68,7 +68,7 @@ Meteor.methods
 
     Email.send({
       to: to,
-      from: from,
+      from: CONFIG.SITE_TITLE+' <'+CONFIG.SITE_EMAIL+'>',
       subject: subject,
       text: text
     })
