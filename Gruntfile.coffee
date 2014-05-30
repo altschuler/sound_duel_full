@@ -6,17 +6,16 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
-    build_path: 'build'
-    dist_path:  '<%= build_path %>/dist'
-    test_path:  '<%= build_path %>/test'
+    dist_path:  'dist'
+    build_path: '<%= dist_path %>/build'
+    test_path:  '<%= dist_path %>/test'
     src_path:   'src'
     core_path:  'lib/core'
 
-    stylesheets_path: '<%= dist_path %>/public/stylesheets'
-
+    stylesheets_path: '<%= build_path %>/public/stylesheets'
 
     clean:
-      build: [ '<%= build_path %>' ]
+      dist:  [ '<%= dist_path %>' ]
       tests: [ '<%= test_path %>' ]
 
     copy:
@@ -24,7 +23,7 @@ module.exports = (grunt) ->
         expand: true
         cwd: '<%= src_path %>/'
         src: '**'
-        dest: '<%= dist_path %>'
+        dest: '<%= build_path %>'
         filter: 'isFile'
       core:
         expand: true
@@ -36,7 +35,7 @@ module.exports = (grunt) ->
           'lib/**'
           'smart.json'
         ]
-        dest: '<%= dist_path %>'
+        dest: '<%= build_path %>'
       tests:
         expand: true
         cwd: '<%= core_path %>/test'
@@ -55,7 +54,7 @@ module.exports = (grunt) ->
     coffeelint:
       build:
         files:
-          src: '<%= build_path %>/**/*.coffee'
+          src: '<%= dist_path %>/**/*.coffee'
         options:
           configFile: 'coffeelint.json'
 
@@ -74,7 +73,7 @@ module.exports = (grunt) ->
           stdout: true
           stderr: true
         execOpts:
-          cwd: '<%= dist_path %>'
+          cwd: '<%= build_path %>'
       run:
         cmd: 'meteor'
         bg: true
@@ -82,7 +81,7 @@ module.exports = (grunt) ->
           stdout: true
           stderr: true
         execOpts:
-          cwd: '<%= dist_path %>'
+          cwd: '<%= build_path %>'
 
     webdriver:
       tests: ->
@@ -117,7 +116,7 @@ module.exports = (grunt) ->
 
   # tasks
   grunt.registerTask 'lint',    [ 'coffeelint' ]
-  grunt.registerTask 'build',   [ 'clean:build', 'copy:src', 'copy:core', 'lint' ]
+  grunt.registerTask 'build',   [ 'clean:dist', 'copy:src', 'copy:core', 'lint' ]
   grunt.registerTask 'update',  [ 'bgShell:update' ]
   grunt.registerTask 'run',     [ 'bgShell:run', 'less' ]
 
