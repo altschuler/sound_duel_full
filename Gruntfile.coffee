@@ -2,9 +2,9 @@
 
 module.exports = (grunt) ->
 
-  # init
   grunt.initConfig
-    pkg: grunt.file.readJSON 'package.json'
+    pkg:    grunt.file.readJSON 'package.json'
+    config: grunt.file.readJSON 'config.json'
 
     dist_path:  'dist'
     build_path: '<%= dist_path %>/build'
@@ -12,8 +12,21 @@ module.exports = (grunt) ->
     src_path:   'src'
     core_path:  'lib/core'
 
-    stylesheets_path: '<%= build_path %>/public/stylesheets'
+    style_path: '<%= build_path %>/public/stylesheets'
 
+    # helpers
+    env: ->
+      mail = "smtp://<%= config.smtp.username %>:" +
+        "<%= config.smtp.password %>@" +
+        "<%= config.smtp.host %>:" +
+        "<%= config.smtp.port %>/"
+
+      if grunt.option('production')
+        "MAIL_URL=#{mail}"
+      else
+        "MAIL_URL=#{mail} ROOT_URL=<%= config.root_url %>"
+
+    # tasks
     clean:
       dist:  [ '<%= dist_path %>' ]
       tests: [ '<%= test_path %>' ]
@@ -61,9 +74,9 @@ module.exports = (grunt) ->
     less:
       main:
         options:
-          paths: '<%= stylesheets_path %>'
+          paths: '<%= style_path %>'
         files:
-          '<%= stylesheets_path %>/index.css': '<%= stylesheets_path %>/index.less'
+          '<%= style_path %>/index.css': '<%= style_path %>/index.less'
 
     bgShell:
       update:
@@ -75,7 +88,7 @@ module.exports = (grunt) ->
         execOpts:
           cwd: '<%= build_path %>'
       run:
-        cmd: 'meteor'
+        cmd: "<%= env() %> meteor"
         bg: true
         options:
           stdout: true
@@ -114,7 +127,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-webdriver'
 
 
-  # tasks
+  # register
   grunt.registerTask 'lint',    [ 'coffeelint' ]
   grunt.registerTask 'build',   [ 'clean:dist', 'copy:src', 'copy:core', 'lint' ]
   grunt.registerTask 'update',  [ 'bgShell:update' ]
