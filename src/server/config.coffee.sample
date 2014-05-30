@@ -1,0 +1,27 @@
+## Rename this file to `config.coffee` and insert your
+## facebook app-id and secret
+
+## Configure facebook
+
+# 1. Remove configuration entry in case service is already configured
+ServiceConfiguration.configurations.remove({
+  service: 'facebook'
+})
+
+# 2. Insert the credentials into the database
+ServiceConfiguration.configurations.insert({
+  service: 'facebook'
+  appId:   '<FACEBOOK-APP-ID>'
+  secret:  '<FACEBOOK-APP-SECRET>'
+})
+
+# Add facebook email to emails field
+Accounts.onCreateUser((options, user) ->
+  if user.services.facebook and user.services.facebook.email
+    if(not user.emails)
+      user.emails = []
+    user.emails.push({address: user.services.facebook.email, verified: false})
+  if options.profile
+    user.profile = options.profile
+  user
+)
