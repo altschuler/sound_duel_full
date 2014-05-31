@@ -1,8 +1,8 @@
 [
   {
     "name": "Den første quiz",
-    "startDate": { "$date": 1401279401795 },
-    "endDate": { "$date": 2401279401795 },
+    "startDate": { "$date": 1401400800000 },
+    "endDate"  : { "$date": 1401487200000 },
     "questions":
       [
         {
@@ -112,6 +112,118 @@
               {
                   "name": "D",
                   "text": "EM Semi Tyskland 2000"
+              }
+          ]
+        }
+      ]
+  },
+  {
+    "name": "Hvilken kamp med Frankrig fra VM 2006 er målet fra?",
+    "startDate": { "$date": 1401487200000 },
+    "endDate"  : { "$date": 1401573600000 },
+    "questions":
+      [
+        {
+          "soundfilePrefix": "QUIZ_VM_2006_FRANKRIG-SPANIEN",
+          "correctAnswer": "A",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Frankring-Spanien 3-1, 1/8-finale"
+              },
+              {
+                  "name": "B",
+                  "text": "Frankrig-Portugal 1-0, semifinale"
+              },
+              {
+                  "name": "C",
+                  "text": "Frankrig-Sydkorea 1-1, gruppekamp"
+              },
+              {
+                  "name": "D",
+                  "text": "Frankrig-Brasilien 1-0, kvartfinale"
+              },
+              {
+                  "name": "E",
+                  "text": "Frankrig-Togo 2-0, gruppekamp"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "QUIZ_VM_2006_FRANKRIG-TOGO",
+          "correctAnswer": "E",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Frankring-Spanien 3-1, 1/8-finale"
+              },
+              {
+                  "name": "B",
+                  "text": "Frankrig-Portugal 1-0, semifinale"
+              },
+              {
+                  "name": "C",
+                  "text": "Frankrig-Sydkorea 1-1, gruppekamp"
+              },
+              {
+                  "name": "D",
+                  "text": "Frankrig-Brasilien 1-0, kvartfinale"
+              },
+              {
+                  "name": "E",
+                  "text": "Frankrig-Togo 2-0, gruppekamp"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "QUIZ_VM_2006_FRANKRIG-BRASILIEN",
+          "correctAnswer": "D",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Frankring-Spanien 3-1, 1/8-finale"
+              },
+              {
+                  "name": "B",
+                  "text": "Frankrig-Portugal 1-0, semifinale"
+              },
+              {
+                  "name": "C",
+                  "text": "Frankrig-Sydkorea 1-1, gruppekamp"
+              },
+              {
+                  "name": "D",
+                  "text": "Frankrig-Brasilien 1-0, kvartfinale"
+              },
+              {
+                  "name": "E",
+                  "text": "Frankrig-Togo 2-0, gruppekamp"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "QUIZ_VM_2006_FRANKRIG-PORTUGAL",
+          "correctAnswer": "B",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Frankring-Spanien 3-1, 1/8-finale"
+              },
+              {
+                  "name": "B",
+                  "text": "Frankrig-Portugal 1-0, semifinale"
+              },
+              {
+                  "name": "C",
+                  "text": "Frankrig-Sydkorea 1-1, gruppekamp"
+              },
+              {
+                  "name": "D",
+                  "text": "Frankrig-Brasilien 1-0, kvartfinale"
+              },
+              {
+                  "name": "E",
+                  "text": "Frankrig-Togo 2-0, gruppekamp"
               }
           ]
         }
