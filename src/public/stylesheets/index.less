@@ -12,18 +12,15 @@
 html { min-height: 100%; }
 
 body {
-  background-image: url('/images/grass.png');
+  background-image: url('/images/bg-VM.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100%;
-  background-position: center bottom;
+  background-position: center top;
 }
 
 .container {
-  margin: 0 auto;
-  max-width: 800px;
   margin-top: 60px;
-
   .row {
     margin-top: 20px;
   }
@@ -63,9 +60,6 @@ body {
   thead {
     background-color: #f5f5f5;
   }
-  tbody {
-    background: white;
-  }
 }
 
 audio.asset, .assets {
@@ -76,7 +70,6 @@ audio.asset, .assets {
   margin: 14px;
   display: none;
 }
-
 
 @-webkit-keyframes countdown-animation {
   from { font-size: 15em; }
@@ -108,8 +101,16 @@ audio.asset, .assets {
   line-height: 300px;
 }
 
+// @media only screen and (max-width: @screen-sm-max) {
+//  	@import "../custom-tiny.less";
+// }
 
+// @media only screen and (min-width: @screen-sm-min) {
+// 	@import "../custom-small.less";
+// }
 
-
-
-
+@media only screen and (min-width: @screen-sm-min) {
+	body {
+		background-image: url('/images/bg-VM-lg.jpg');
+	}
+}
