@@ -83,6 +83,10 @@ audio.asset, .assets {
 }
 
 .sound-duel-countdown {
+  // Speed up animations on iPhone and Android (force GPU acceleration)
+  // See: http://chrissilich.com/blog/fix-css-animation-slow-or-choppy-in-mobile-browsers/
+  -webkit-transform: translateZ(0);
+
   -webkit-animation : countdown-animation 1s ease 4;
   -moz-animation    : countdown-animation 1s ease 4;
   -o-animation      : countdown-animation 1s ease 4;
