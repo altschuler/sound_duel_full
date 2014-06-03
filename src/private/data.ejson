@@ -1,5 +1,35 @@
 [
   {
+    "name": "Hvor gammel bliver en ræv?",
+    "startDate": { "$date": 0 },
+    "endDate"  : { "$date": 3000000000000 },
+    "questions":
+      [
+        {
+          "soundfilePrefix": "EM-Finale_DK-DE",
+          "correctAnswer": "D",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Lige så gammel som en grævling"
+              },
+              {
+                  "name": "B",
+                  "text": "12"
+              },
+              {
+                  "name": "C",
+                  "text": "42 år gammel"
+              },
+              {
+                  "name": "D",
+                  "text": "Det ved jeg ikke"
+              }
+          ]
+        }
+      ]
+  },
+  {
     "name": "Den første quiz",
     "startDate": { "$date": 1401400800000 },
     "endDate"  : { "$date": 1401487200000 },
