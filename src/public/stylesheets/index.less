@@ -20,22 +20,17 @@ body {
 }
 
 .container {
-  margin-top: 60px;
+  margin: 0 auto;
+  max-width: 800px;
+
   .row {
     margin-top: 20px;
   }
 }
 
 #logo {
-  position: absolute;
-  left: @banner-margin;
-  top: @banner-margin;
-
   img {
     width: 100px;
-  }
-
-  img {
     content:url("/images/dr-logo.svg");
   }
 }
@@ -45,15 +40,17 @@ body {
   margin-bottom: 20px;
 }
 
-#username-form {
+.session-buttons {
   margin: auto;
   max-width: 300px;
-}
 
-#highscores {
-  position: absolute;
-  top: @banner-margin;
-  right: @banner-margin;
+  .or {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+  .hline { text-decoration: line-through; color: lightgrey; }
+  .or-text { font-weight: bold; }
 }
 
 #highscore-table {
