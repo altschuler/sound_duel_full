@@ -17,28 +17,30 @@ body {
 }
 
 .container {
-  margin: 0 auto;
-  max-width: 800px;
+  &.layout {
+    margin-top:60px;
+  }
 
   .row {
     margin-top: 20px;
   }
 }
 
-.layout {
-  margin-top: 60px;
-}
-
 #logo {
-  img {
-    width: 100px;
-    content:url("/images/dr-logo.svg");
-  }
+  background-image:url("/images/dr-logo.svg");
+  background-position:center left;
+  background-repeat:no-repeat;
+  background-size:contain;
+  display:block;
+  height:auto;
+  width:100px;
+  text-indent:-9999px;
 }
 
-#heading {
+.page-header {
   text-align: center;
-  margin-bottom: 20px;
+  border:none;
+  margin:0;
 }
 
 .session-buttons {
