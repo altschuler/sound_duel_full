@@ -1,6 +1,17 @@
+# **iOS**: Ensure that sound is started
+Template.question.ensurePlaying = ->
+  setTimeout(Template.question.showQuestion, 4000)
 
 # From: http://stackoverflow.com/a/9255507/118608
 Template.question.startQuestion = ->
+  console.log 'Template.question.startQuestion() called'
+
+  # Skip animation if spacebar is pressed
+  $('body').keyup( (e) ->
+    if e.keyCode == 32
+      # user has pressed space
+      Template.question.showQuestion()
+  )
 
   # Reset progress bar
   Session.set 'gameProgress', 100
@@ -14,14 +25,15 @@ Template.question.startQuestion = ->
 
   # Reset animation
   countdown = $(".sound-duel-countdown")[0]
-  countdown.style.webkitAnimation = "none"
-  countdown.style.MozAnimation    = "none"
-  countdown.style.animation       = "none"
-  setTimeout( ->
-    countdown.style.webkitAnimation = ""
-    countdown.style.MozAnimation    = ""
-    countdown.style.animation       = ""
-  , 10)
+  if countdown
+    countdown.style.webkitAnimation = "none"
+    countdown.style.MozAnimation    = "none"
+    countdown.style.animation       = "none"
+    setTimeout( ->
+      countdown.style.webkitAnimation = ""
+      countdown.style.MozAnimation    = ""
+      countdown.style.animation       = ""
+    , 10)
 
   # Setup variables
   i = 0
@@ -40,12 +52,18 @@ Template.question.startQuestion = ->
   # When the animation has ended show the questions and play the sound
   $(".sound-duel-countdown").bind(
     "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",
-    ->
-      # Hide countdown, show questions
-      $(this).hide()
-      $('#alternative-container').show()
-
-      # Enable answer buttons
-      $('.alternative').prop 'disabled', false
-      Template.assets.playAsset()
+    -> Template.question.showQuestion()
   )
+
+
+Template.question.showQuestion = ->
+  # Hide countdown, show questions
+  $('[data-sd-quiz-progressbar]').show()
+  $(".sound-duel-countdown").hide()
+  $('#alternative-container').show()
+
+  # Enable answer buttons
+  $('.alternative').prop 'disabled', false
+
+  # Play sound
+  Template.assets.playAsset()
