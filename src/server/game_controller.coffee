@@ -1,4 +1,4 @@
-# app/server/game_controller.coffee
+# src/server/game_controller.coffee
 
 # helpers
 

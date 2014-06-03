@@ -1,4 +1,4 @@
-# app/server/main.coffee
+# src/server/main.coffee
 
 fs = Npm.require 'fs'
 
@@ -74,19 +74,16 @@ Meteor.methods
       online: true
       lastKeepalive: (new Date()).getTime()
 
-  sendEmail: (to, subject, text) ->
-    check([to, subject, text], [String])
+  sendEmail: (options) ->
+    check([options.to, options.subject, options.html], [String])
+
+    options.from = "#{CONFIG.SITE_TITLE} <#{CONFIG.SITE_EMAIL}>"
 
     # Let other method calls from the same client start running,
     # without waiting for the email sending to complete.
     this.unblock()
 
-    Email.send({
-      to: to,
-      from: CONFIG.SITE_TITLE+' <'+CONFIG.SITE_EMAIL+'>',
-      subject: subject,
-      text: text
-    })
+    Email.send options
 
 # initialize
 
