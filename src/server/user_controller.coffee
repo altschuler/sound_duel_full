@@ -22,7 +22,7 @@ Meteor.methods
   logoutUser: (id) ->
     Meteor.users.update id, $set: { online: false }
 
-  inviteUser: (mail, challengerId) ->
+  notifyUserOnChallenge: (mail, challengerId) ->
     challenger = Meteor.users.findOne challengerId
     now = new Date()
     quiz = Quizzes.findOne
@@ -34,10 +34,24 @@ Meteor.methods
       name: challenger.profile.name
       gamename: CONFIG.SITE_TITLE
       quizname: quiz.name
-      invitelink: CONFIG.SITE_URL
+      rootlink: CONFIG.SITE_URL
       mail: CONFIG.SITE_EMAIL
 
     Meteor.call 'sendEmail',
       to: mail
       subject: "Du er blevet udfordret!"
+      html: html
+
+  notifyUserOnAnswer: (mail, challengeeId) ->
+    challengee = Meteor.users.findOne challengeeId
+
+    html = Handlebars.templates['answered']
+      name: challengee.profile.name
+      gamename: CONFIG.SITE_TITLE
+      rootlink: CONFIG.SITE_URL
+      mail: CONFIG.SITE_EMAIL
+
+    Meteor.call 'sendEmail',
+      to: mail
+      subject: "Din udfordring er blevet svaret!"
       html: html
