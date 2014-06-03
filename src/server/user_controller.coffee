@@ -9,10 +9,12 @@ Accounts.onCreateUser (options, user) ->
       verified: false
 
   user.profile = options.profile
-  user.online = true;
+  user.online = true
 
   user
 
+Accounts.onLogin (options) ->
+  Meteor.users.update options.user._id, $set: { online: true }
 
 # methods
 Meteor.methods
