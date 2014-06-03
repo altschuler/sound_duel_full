@@ -18,7 +18,7 @@ insertGame = (playerId) ->
     endDate:   {$gt: now}
   , {limit: 1})
 
-  unless quiz_of_the_day.count() is 1
+  if quiz_of_the_day.count() is 0
     throw new Meteor.Error 'Quiz of the day not found'
 
   quiz_of_the_day = quiz_of_the_day.fetch()[0]
