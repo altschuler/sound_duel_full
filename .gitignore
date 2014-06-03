@@ -6,3 +6,4 @@ node_modules
 
 .vagrant/
 /config.json
+/src/server/config.coffee
