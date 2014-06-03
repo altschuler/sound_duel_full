@@ -228,5 +228,117 @@
           ]
         }
       ]
+  },
+  {
+    "name": "Hvilken VM-kamp med Brasilien er scoringen fra?",
+    "startDate": { "$date": 1401746400000 },
+    "endDate"  : { "$date": 1401832800000 },
+    "questions":
+      [
+        {
+          "soundfilePrefix": "QUIZ_VM_1970_BRASILIEN-ENGLAND",
+          "correctAnswer": "C",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "VM 1982 Brasilien-Skotland 4-1"
+              },
+              {
+                  "name": "B",
+                  "text": "VM 1974 Brasilien-Zaire 3-0"
+              },
+              {
+                  "name": "C",
+                  "text": "VM 1970 Brasilien-England 1-0"
+              },
+              {
+                  "name": "D",
+                  "text": "VM 1986 Brasilien-Spanien 1-0"
+              },
+              {
+                  "name": "E",
+                  "text": "VM 1978 Brasilien-Sverige 1-1"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "QUIZ_VM_1974_BRASILIEN-ZAIRE",
+          "correctAnswer": "B",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "VM 1982 Brasilien-Skotland 4-1"
+              },
+              {
+                  "name": "B",
+                  "text": "VM 1974 Brasilien-Zaire 3-0"
+              },
+              {
+                  "name": "C",
+                  "text": "VM 1970 Brasilien-England 1-0"
+              },
+              {
+                  "name": "D",
+                  "text": "VM 1986 Brasilien-Spanien 1-0"
+              },
+              {
+                  "name": "E",
+                  "text": "VM 1978 Brasilien-Sverige 1-1"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "QUIZ_VM_1982_BRASILIEN-SKOTLAND",
+          "correctAnswer": "A",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "VM 1982 Brasilien-Skotland 4-1"
+              },
+              {
+                  "name": "B",
+                  "text": "VM 1974 Brasilien-Zaire 3-0"
+              },
+              {
+                  "name": "C",
+                  "text": "VM 1970 Brasilien-England 1-0"
+              },
+              {
+                  "name": "D",
+                  "text": "VM 1986 Brasilien-Spanien 1-0"
+              },
+              {
+                  "name": "E",
+                  "text": "VM 1978 Brasilien-Sverige 1-1"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "QUIZ_VM_1978_BRASILIEN-SVERIGE",
+          "correctAnswer": "E",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "VM 1982 Brasilien-Skotland 4-1"
+              },
+              {
+                  "name": "B",
+                  "text": "VM 1974 Brasilien-Zaire 3-0"
+              },
+              {
+                  "name": "C",
+                  "text": "VM 1970 Brasilien-England 1-0"
+              },
+              {
+                  "name": "D",
+                  "text": "VM 1986 Brasilien-Spanien 1-0"
+              },
+              {
+                  "name": "E",
+                  "text": "VM 1978 Brasilien-Sverige 1-1"
+              }
+          ]
+        }
+      ]
   }
 ]
