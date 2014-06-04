@@ -66,30 +66,33 @@ audio.asset, .assets {
   display: none;
 }
 
+[data-sd-quiz-progressbar] {
+  display: none;
+}
+
 #alternative-container {
   margin: 14px;
   display: none;
 }
 
+@countdown-normal-from: 15em;
+@countdown-normal-to: 6em;
+
 @-webkit-keyframes countdown-animation {
-  from { font-size: 15em; }
-  to   { font-size: 6em; }
+  from { font-size: @countdown-normal-from; }
+  to   { font-size: @countdown-normal-to; }
 }
 @-moz-keyframes countdown-animation {
-  from { font-size: 15em; }
-  to   { font-size: 6em; }
+  from { font-size: @countdown-normal-from; }
+  to   { font-size: @countdown-normal-to; }
 }
 @-o-keyframes countdown-animation {
-  from { font-size: 15em; }
-  to   { font-size: 6em; }
+  from { font-size: @countdown-normal-from; }
+  to   { font-size: @countdown-normal-to; }
 }
 @keyframes countdown-animation {
-  from { font-size: 15em; }
-  to   { font-size: 6em; }
-}
-
-[data-sd-quiz-progressbar] {
-  display: none;
+  from { font-size: @countdown-normal-from; }
+  to   { font-size: @countdown-normal-to; }
 }
 
 .sound-duel-countdown {
@@ -105,7 +108,40 @@ audio.asset, .assets {
   animation         : countdown-animation 1s ease 4;
 
   text-align: center;
-  font-size: 6em;
+  font-size: @countdown-normal-to;
+
+  height:      300px;
+  line-height: 300px;
+}
+
+@countdown-smaller-from: 8em;
+@countdown-smaller-to: 4em;
+
+@-webkit-keyframes countdown-animation-smaller {
+  from { font-size: @countdown-smaller-from; }
+  to   { font-size: @countdown-smaller-to; }
+}
+@-moz-keyframes countdown-animation-smaller {
+  from { font-size: @countdown-smaller-from; }
+  to   { font-size: @countdown-smaller-to; }
+}
+@-o-keyframes countdown-animation-smaller {
+  from { font-size: @countdown-smaller-from; }
+  to   { font-size: @countdown-smaller-to; }
+}
+@keyframes countdown-animation-smaller {
+  from { font-size: @countdown-smaller-from; }
+  to   { font-size: @countdown-smaller-to; }
+}
+
+.sound-duel-countdown.smaller {
+  -webkit-animation : countdown-animation-smaller 1s ease 1;
+  -moz-animation    : countdown-animation-smaller 1s ease 1;
+  -o-animation      : countdown-animation-smaller 1s ease 1;
+  animation         : countdown-animation-smaller 1s ease 1;
+
+  text-align: center;
+  font-size: @countdown-smaller-to;
 
   height:      300px;
   line-height: 300px;
