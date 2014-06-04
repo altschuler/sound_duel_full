@@ -49,6 +49,26 @@ insertChallenge = ({
     challengeeGameId: challengeeGameId
     notified:         false
 
+notifyChallenge = (gameId)->
+
+  challenge = Challenges.findOne { challengerGameId: gameId }
+
+  #if game is by challenger and invite by email
+  if challenge and challenge.challengeeEmail
+    #send invite mail to challengee when challenger has played
+    Meteor.call 'notifyUserOnChallenge',
+      challenge.challengeeEmail, Meteor.userId()
+    return
+
+  challenge = Challenges.findOne { challengeeGameId: gameId }
+
+  #if game is by challengee and invited by email
+  if challenge and challenge.challengeeEmail
+    #send info mail to challenger when challengee has played
+    challenger = Meteor.users.findOne challenge.challengerId
+    Meteor.call 'notifyUserOnAnswer',
+      challenger.emails[0].address, Meteor.userId()
+    return
 
 # methods
 
@@ -67,13 +87,27 @@ Meteor.methods
     # if accepting challenge, find the game
     if acceptChallengeId
       gameId = Challenges.findOne(acceptChallengeId).challengeeGameId
+      game = Games.findOne gameId
+      #if invited via email, playerId is not set
+      if not game.playerId?
+        Games.update game._id, $set: { playerId: playerId }
     # else, create new game
     else
       gameId = insertGame(playerId)
-      challengeId = acceptChallengeId
+      challengeId = null
 
     # if challenging, create new game for challengee
     if challengeeId or challengeeEmail
+
+      if playerId is challengeeId
+        throw new Meteor.Error 'cannot challenge yourself'
+
+      challengee = Meteor.users.findOne {
+        emails: { $elemMatch: { address: challengeeEmail } }
+      }
+      if challengee and playerId is challengee._id
+        throw new Meteor.Error 'cannot challenge yourself'
+
       challengeeGameId = insertGame(challengeeId)
 
       challengeId = insertChallenge
@@ -102,6 +136,8 @@ Meteor.methods
         correctAnswers++
         score += a.points
 
+    notifyChallenge currentGameId
+
     # mark game as finished
     Games.update game._id,
       $set: {
@@ -109,3 +145,4 @@ Meteor.methods
         score: score
         correctAnswers: correctAnswers
       }
+

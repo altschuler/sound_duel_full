@@ -37,6 +37,7 @@ Meteor.methods
       rootlink: CONFIG.SITE_URL
       mail: CONFIG.SITE_EMAIL
 
+    console.log "Invite email sent"
     Meteor.call 'sendEmail',
       to: mail
       subject: "Du er blevet udfordret!"
@@ -51,6 +52,7 @@ Meteor.methods
       rootlink: CONFIG.SITE_URL
       mail: CONFIG.SITE_EMAIL
 
+    console.log "Confirm email sent"
     Meteor.call 'sendEmail',
       to: mail
       subject: "Din udfordring er blevet svaret!"
