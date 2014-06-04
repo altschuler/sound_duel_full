@@ -130,8 +130,8 @@ module.exports = (grunt) ->
   # register
   grunt.registerTask 'lint',    [ 'coffeelint' ]
   grunt.registerTask 'build',   [ 'clean:dist', 'copy:src', 'copy:core', 'lint' ]
-  grunt.registerTask 'update',  [ 'bgShell:update' ]
-  grunt.registerTask 'run',     [ 'bgShell:run', 'less' ]
+  grunt.registerTask 'update',  [ 'bgShell:update', 'less' ]
+  grunt.registerTask 'run',     [ 'bgShell:run' ]
 
   browser = grunt.option('browser') || 'chrome'
   grunt.registerTask 'test',    [ 'clean:tests', 'copy:tests', 'webdriver:' + browser ]
