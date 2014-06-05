@@ -12,7 +12,6 @@ refreshDb = ->
   ## Meteor.users.remove({})
   Games.remove({})
   Challenges.remove({})
-  Highscores.remove({})
   Quizzes.remove({})
   Questions.remove({})
   Sounds.remove({})
