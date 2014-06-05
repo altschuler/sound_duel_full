@@ -30,6 +30,8 @@ Meteor.methods
       endDate:   {$gt: now}
     , {limit: 1}
 
+    this.unblock()
+
     html = Handlebars.templates['invite']
       name: challenger.profile.name
       gamename: CONFIG.SITE_TITLE
@@ -45,6 +47,8 @@ Meteor.methods
 
   notifyUserOnAnswer: (mail, challengeeId) ->
     challengee = Meteor.users.findOne challengeeId
+
+    this.unblock()
 
     html = Handlebars.templates['answered']
       name: challengee.profile.name
