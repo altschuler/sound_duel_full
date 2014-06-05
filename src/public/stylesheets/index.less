@@ -55,6 +55,27 @@ h1,h2,h3,h4,h5,h6 {
   margin:0;
 }
 
+.navbar-notifications {
+  &.navbar-text {
+    margin-top:0;
+    margin-bottom:0;
+    padding-top:14px;
+    padding-bottom:14px;
+  }
+  .dropdown-menu > li {
+    border-bottom:1px solid @gray-lighter;
+    > span {
+      clear: both;
+      color: #4D4D4D;
+      display: block;
+      font-weight: normal;
+      line-height: 1.42857;
+      padding: 3px 20px;
+      white-space: nowrap;
+    }
+  }
+}
+
 .session-buttons {
   margin: auto;
   max-width: 300px;
