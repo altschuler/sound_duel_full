@@ -62,7 +62,7 @@ keepaliveLoop = ->
 
     # set players to idle
     Meteor.users.update lastKeepalive: { $lt: threshold },
-      $set: { 'profile.online': false }
+      $set: { online: false }
 
   , CONFIG.ONLINE_TRESHOLD)
 
@@ -83,6 +83,7 @@ Meteor.methods
     this.unblock()
 
     Email.send options
+
 
 # initialize
 
