@@ -1,5 +1,14 @@
 /* app/client/index.less */
 
+@font-face {
+  font-family: "gibsonBold";
+  font-weight: normal;
+  src: url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.eot?#iefix") format("embedded-opentype"),
+       url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.woff") format("woff"),
+       url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.ttf") format("truetype"),
+       url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.svg") format("svg");
+}
+
 //import bootstrap
 @import "bootstrap.less";
 
@@ -11,9 +20,12 @@ html { min-height: 100%; }
 body {
   background-image: url('/images/bg-VM.jpg');
   background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center top;
+  background-repeat: no-repeat no-repeat;
+  background-position: 50% 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  text-transform: uppercase;
 }
 
 .container {
@@ -27,14 +39,14 @@ body {
 }
 
 #logo {
-  background-image:url("/images/dr-logo.png");
-  background-position:center left;
-  background-repeat:no-repeat;
-  background-size:contain;
+  background-image:url("http://www.dr.dk/assets/img/sprites/dr-logo-tv-sprite-large.0a9a412.png");
+  background-position:-348px 0;
   display:block;
-  height:auto;
-  width:100px;
+  height:24px;
+  width:81px;
   text-indent:-9999px;
+  margin-top:12px;
+  margin-right:10px;
 }
 
 .page-header {
