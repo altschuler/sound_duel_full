@@ -7,7 +7,7 @@
   , "NUMBER_OF_QUESTION":  5
   , "POINTS_PER_QUESTION": 1000
 
-  , "SITE_TITLE": "Målsuppe"
+  , "SITE_TITLE": "Marco's Crazy VM spil"
   , "SITE_EMAIL": "cto@bitblueprint.com"
-  , "SITE_URL":   "http://sound-duel.dr:3000/"
+  , "SITE_URL":   "http://sd.dr.demo.bitblueprint.com/"
 }
