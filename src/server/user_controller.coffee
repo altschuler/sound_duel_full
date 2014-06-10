@@ -39,11 +39,15 @@ Meteor.methods
       rootlink: CONFIG.SITE_URL
       mail: CONFIG.SITE_EMAIL
 
-    console.log "Invite email sent"
     Meteor.call 'sendEmail',
       to: mail
       subject: "Du er blevet udfordret!"
       html: html
+    , (err) ->
+      if err?
+        console.log "Error notify mail"
+      else
+        console.log "Confirm email sent"
 
   notifyUserOnAnswer: (mail, challengeeId) ->
     challengee = Meteor.users.findOne challengeeId
@@ -56,8 +60,12 @@ Meteor.methods
       rootlink: CONFIG.SITE_URL
       mail: CONFIG.SITE_EMAIL
 
-    console.log "Confirm email sent"
     Meteor.call 'sendEmail',
       to: mail
       subject: "Din udfordring er blevet svaret!"
       html: html
+    , (err) ->
+      if err?
+        console.log "Error answer mail"
+      else
+        console.log "Confirm email sent"

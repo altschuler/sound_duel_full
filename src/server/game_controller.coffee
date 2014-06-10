@@ -137,13 +137,10 @@ Meteor.methods
         score += a.points
 
     # mark game as finished
-    Games.update game._id,
-      $set: {
-        state: 'finished'
-        score: score
-        correctAnswers: correctAnswers
-      }
+    Games.update game._id, $set:
+      state: 'finished'
+      score: score
+      correctAnswers: correctAnswers
 
     this.unblock()
     notifyChallenge currentGameId
-
