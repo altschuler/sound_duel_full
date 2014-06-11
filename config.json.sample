@@ -1,9 +1,0 @@
-{
-  "root_url": "http://sound-duel.dr:3000/",
-  "smtp": {
-    "host": "smtp.mailgun.com",
-    "port": "587",
-    "username": "USER",
-    "password": "PASSWORD"
-  }
-}
