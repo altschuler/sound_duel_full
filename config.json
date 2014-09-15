@@ -1,4 +1,10 @@
 {
-  "game_name": "DR Sportens FIFA VM lydquiz"
-, "site_url": "http://sd.dr.demo.bitblueprint.com/"
+    "game_name": "DR Sportens FIFA VM lydquiz"
+    , "site_url": "http://sd.dr.demo.bitblueprint.com/"
+    , "smtp": {
+        "host": "smtp.mailgun.com",
+        "port": "587",
+        "username": "USER",
+        "password": "PASSWORD"
+    }
 }

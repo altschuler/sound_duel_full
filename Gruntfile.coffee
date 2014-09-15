@@ -80,7 +80,7 @@ module.exports = (grunt) ->
 
     bgShell:
       update:
-        cmd: 'mrt update'
+        cmd: 'meteor update'
         bg: false
         options:
           stdout: true
