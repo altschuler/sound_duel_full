@@ -16,15 +16,21 @@ module.exports = (grunt) ->
 
     # helpers
     env: ->
+      opts = []
       mail = "smtp://<%= config.smtp.username %>:" +
         "<%= config.smtp.password %>@" +
         "<%= config.smtp.host %>:" +
         "<%= config.smtp.port %>/"
 
-      if grunt.option('production')
-        "MAIL_URL=#{mail}"
-      else
-        "MAIL_URL=#{mail} ROOT_URL=<%= config.root_url %>"
+      opts.push "MAIL_URL=#{mail}"
+
+      if grunt.option 'production'
+        opts.push "ROOT_URL=<%= config.root_url %>"
+
+      if grunt.option 'nodedebug'
+        opts.push "NODE_OPTIONS=--debug-brk"
+
+      opts.join ' '
 
     # tasks
     clean:
@@ -130,7 +136,7 @@ module.exports = (grunt) ->
   # register
   grunt.registerTask 'lint',    [ 'coffeelint' ]
   grunt.registerTask 'build',   [ 'clean:dist', 'copy:src', 'copy:core', 'lint' ]
-  grunt.registerTask 'update',  [ 'bgShell:update', 'less' ]
+  grunt.registerTask 'update',  [ 'less' ] # 'bgShell:update',
   grunt.registerTask 'run',     [ 'bgShell:run' ]
 
   browser = grunt.option('browser') || 'chrome'
