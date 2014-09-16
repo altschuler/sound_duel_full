@@ -13,13 +13,9 @@ findQuestions = ->
 insertGame = (playerId) ->
   # Find the quiz of the day
   now = new Date()
-  quiz_of_the_day = Quizzes.find(
-    startDate: {$lt: now}
-    endDate:   {$gt: now}
-  ,
+  quiz_of_the_day = Quizzes.find {},
     limit: 1
     sort: ['endDate', 'desc'] # Grab the quiz that ends the soonest
-  )
 
   if quiz_of_the_day.count() is 0
     throw new Meteor.Error 'Quiz of the day not found'
