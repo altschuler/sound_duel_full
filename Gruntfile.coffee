@@ -80,7 +80,7 @@ module.exports = (grunt) ->
 
     bgShell:
       update:
-        cmd: 'meteor update'
+        cmd: 'meteor update --release 0.9.0.1'
         bg: false
         options:
           stdout: true

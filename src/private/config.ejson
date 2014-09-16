@@ -1,6 +1,5 @@
 {
-    "ASSETS_DIR":          "../client/app/audio/"
-  , "_commented_ASSETS_DIR":          "../../../../../public/audio"
+    "ASSETS_DIR":          "../../../../../public/audio"
   , "SAMPLE_DATA":         "data.ejson"
 
   , "ONLINE_TRESHOLD":     60000
