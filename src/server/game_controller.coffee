@@ -140,3 +140,36 @@ Meteor.methods
 
     this.unblock()
     notifyChallenge currentGameId
+
+  startQuestion: (gameId) ->
+    game = Games.findOne gameId
+    unless game?
+      throw new Meteor.Error 404, "Game not found"
+
+    quiz = Quizzes.findOne game.quizId
+    unless quiz?
+      throw new Meteor.Error 404, "Quiz not found"
+
+    return if game.answers[game.currentQuestion]?
+
+    Games.update gameId,
+      $addToSet:
+        answers:
+          questionId: quiz.questionIds[game.currentQuestion]
+          startTime: (new Date()).getTime()
+
+  stopQuestion: (gameId, alternative) ->
+    game = Games.findOne gameId
+    unless game?
+      throw new Meteor.Error 404, "Game not found"
+
+    answer = game.answers[game.currentQuestion]
+
+    answer.endTime = (new Date()).getTime()
+    answer.answer = alternative
+
+    Games.update { _id: gameId, 'answers.questionId': answer.questionId } ,
+      $set: { 'answers.$': answer }
+      $inc: { currentQuestion: 1 }
+
+    return game.currentQuestion + 1
