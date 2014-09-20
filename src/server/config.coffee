@@ -11,6 +11,6 @@ ServiceConfiguration.configurations.remove({
 # 2. Insert the credentials into the database
 ServiceConfiguration.configurations.insert({
   service: 'facebook'
-  appId:   '<FACEBOOK-APP-ID>'
-  secret:  '<FACEBOOK-APP-SECRET>'
+  # appId:   '<FACEBOOK-APP-ID>'
+  # secret:  '<FACEBOOK-APP-SECRET>'
 })
