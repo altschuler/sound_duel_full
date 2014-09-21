@@ -66,9 +66,11 @@ notifyChallenge = (gameId)->
       challenger.emails[0].address, Meteor.userId()
     return
 
+
 # methods
 
 Meteor.methods
+
   newGame: (playerId, {challengeeId, acceptChallengeId, challengeeEmail}) ->
     unless Meteor.users.find(playerId).count() is 1
       throw new Meteor.Error 'player not found'
@@ -119,6 +121,7 @@ Meteor.methods
       challengeId: challengeId
     }
 
+
   endGame: (currentGameId) ->
     game = Games.findOne currentGameId
     throw new Meteor.Error 'game not found' unless game?
@@ -140,36 +143,3 @@ Meteor.methods
 
     this.unblock()
     notifyChallenge currentGameId
-
-  startQuestion: (gameId) ->
-    game = Games.findOne gameId
-    unless game?
-      throw new Meteor.Error 404, "Game not found"
-
-    quiz = Quizzes.findOne game.quizId
-    unless quiz?
-      throw new Meteor.Error 404, "Quiz not found"
-
-    return if game.answers[game.currentQuestion]?
-
-    Games.update gameId,
-      $addToSet:
-        answers:
-          questionId: quiz.questionIds[game.currentQuestion]
-          startTime: (new Date()).getTime()
-
-  stopQuestion: (gameId, alternative) ->
-    game = Games.findOne gameId
-    unless game?
-      throw new Meteor.Error 404, "Game not found"
-
-    answer = game.answers[game.currentQuestion]
-
-    answer.endTime = (new Date()).getTime()
-    answer.answer = alternative
-
-    Games.update { _id: gameId, 'answers.questionId': answer.questionId } ,
-      $set: { 'answers.$': answer }
-      $inc: { currentQuestion: 1 }
-
-    return game.currentQuestion + 1
