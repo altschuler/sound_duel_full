@@ -1,3 +1,3 @@
 [submodule "lib/core"]
 	path = lib/core
-	url = git@github.com:bitblueprint/Sound-Duel-Core.git
+	url = git@github.com:altschuler/sound_duel_core_user.git
