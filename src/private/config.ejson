@@ -1,6 +1,6 @@
 {
     "ASSETS_DIR":          "../../../../../public/audio"
-  , "SAMPLE_DATA":         "data.ejson"
+  , "DATA_PATH":           "data.ejson"
 
   , "ONLINE_TRESHOLD":     60000
 
@@ -8,6 +8,6 @@
   , "POINTS_PER_QUESTION": 1000
 
   , "SITE_TITLE": "Marco's Crazy VM spil"
-  , "SITE_EMAIL": "cto@bitblueprint.com"
+  , "SITE_EMAIL": "postmaster@bitblueprint.com"
   , "SITE_URL":   "http://sd.dr.demo.bitblueprint.com/"
 }

@@ -24,18 +24,12 @@ Meteor.methods
 
   notifyUserOnChallenge: (mail, challengerId) ->
     challenger = Meteor.users.findOne challengerId
-    now = new Date()
-    quiz = Quizzes.findOne
-      startDate: {$lt: now}
-      endDate:   {$gt: now}
-    , {limit: 1}
 
     this.unblock()
 
     html = Handlebars.templates['invite']
       name: challenger.profile.name
       gamename: CONFIG.SITE_TITLE
-      quizname: quiz.name
       rootlink: CONFIG.SITE_URL
       mail: CONFIG.SITE_EMAIL
 

@@ -21,7 +21,7 @@ refreshDb = ->
     ~file.indexOf('.mp3')
 
   # parse questions from sample file
-  sampleQuizzes = EJSON.parse(Assets.getText CONFIG.SAMPLE_DATA)
+  sampleQuizzes = EJSON.parse(Assets.getText CONFIG.DATA_PATH)
 
   # populate database
   for quiz in sampleQuizzes
