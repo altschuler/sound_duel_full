@@ -7,7 +7,7 @@
   , "NUMBER_OF_QUESTION":  5
   , "POINTS_PER_QUESTION": 1000
 
-  , "SITE_TITLE": "Marco's Crazy VM spil"
+  , "SITE_TITLE": "Fuld funktionalitets quiz"
   , "SITE_EMAIL": "postmaster@bitblueprint.com"
-  , "SITE_URL":   "http://sd.dr.demo.bitblueprint.com/"
+  , "SITE_URL":   "http://fuld.sd.dr.demo.bitblueprint.com/"
 }
