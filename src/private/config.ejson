@@ -1,5 +1,5 @@
 {
-    "ASSETS_DIR":          "../../../../../public/audio"
+    "ASSETS_DIR":          "../web.browser/app/audio"
   , "DATA_PATH":           "data.ejson"
 
   , "ONLINE_TRESHOLD":     60000
