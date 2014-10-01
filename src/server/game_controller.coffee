@@ -11,20 +11,12 @@ findQuestions = ->
   ).fetch()
 
 insertGame = (playerId) ->
-  # Find the quiz of the day
-  now = new Date()
-  quiz_of_the_day = Quizzes.find {},
-    limit: 1
-    sort: ['endDate', 'desc'] # Grab the quiz that ends the soonest
-
-  if quiz_of_the_day.count() is 0
-    throw new Meteor.Error 'Quiz of the day not found'
-
-  quiz_of_the_day = quiz_of_the_day.fetch()[0]
+  # random quiz
+  quiz = @randomFromCollection Quizzes
 
   Games.insert
     playerId:          playerId
-    quizId:            quiz_of_the_day._id
+    quizId:            quiz._id
     pointsPerQuestion: CONFIG.POINTS_PER_QUESTION
     state:             'init'
     currentQuestion:   0
