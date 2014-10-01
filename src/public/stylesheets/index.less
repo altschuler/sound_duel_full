@@ -1,36 +1,19 @@
 /* app/client/index.less */
 
-@font-face {
-  font-family: "gibsonBold";
-  font-weight: normal;
-  src: url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.eot?#iefix") format("embedded-opentype"),
-       url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.woff") format("woff"),
-       url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.ttf") format("truetype"),
-       url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.svg") format("svg");
-}
-
-@font-face {
-  font-family: "gibsonSemiBold";
-  font-weight: normal;
-  src: url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.eot?#iefix") format("embedded-opentype"),
-       url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.woff") format("woff"),
-       url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.ttf") format("truetype"),
-       url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.svg") format("svg");
-}
-
 //import bootstrap
 @import "bootstrap.less";
-
 
 // rules
 
 html { min-height: 100%; }
 
 body {
-  background-image: url('/images/bg-VM.jpg');
+  background-image: @background-image;
   background-attachment: fixed;
   background-repeat: no-repeat no-repeat;
-  background-position: 50% 0;
+  background-position: center top;
+  background-color: #f3f3f3;
+  background-size: contain;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -73,7 +56,7 @@ h1 {
 }
 
 #logo {
-  background-image:url("http://www.dr.dk/assets/img/sprites/dr-logo-tv-sprite-large.0a9a412.png");
+  background-image: @dr-logo;
   background-position:-348px 0;
   background-repeat: no-repeat;
   display:block;
@@ -230,6 +213,6 @@ audio.asset, .assets {
 
 @media only screen and (min-width: @screen-sm-min) {
 	body {
-		background-image: url('/images/bg-VM-lg.jpg');
+		background-image: @background-image;
 	}
 }

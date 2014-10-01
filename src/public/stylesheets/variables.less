@@ -4,8 +4,29 @@
 //
 // Variables
 // --------------------------------------------------
+@font-face {
+  font-family: "gibsonBold";
+  font-weight: normal;
+  src: url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.eot?#iefix") format("embedded-opentype"),
+       url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.woff") format("woff"),
+       url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.ttf") format("truetype"),
+       url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.svg") format("svg");
+}
+
+@font-face {
+  font-family: "gibsonSemiBold";
+  font-weight: normal;
+  src: url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.eot?#iefix") format("embedded-opentype"),
+       url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.woff") format("woff"),
+       url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.ttf") format("truetype"),
+       url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.svg") format("svg");
+}
 
 @font-gibson-semibold: "gibsonSemiBold", Arial, sans-serif;
+
+//@background-image: url('/images/6293476.png');
+@background-image: url('/images/background.jpg');
+@dr-logo: url("http://www.dr.dk/assets/img/sprites/dr-logo-tv-sprite-large.0a9a412.png");
 
 //== Colors
 //
@@ -17,7 +38,7 @@
 @gray-light:             #ccc;
 @gray-lighter:           #e5e5e5;
 
-@brand-primary:         #feef00;
+@brand-primary:         #ff6400;
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
@@ -29,7 +50,7 @@
 // ## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #439539;
+@body-bg:               #f3f3f3;
 //** Global text color on `<body>`.
 @text-color:            #000;
 
