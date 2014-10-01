@@ -1,223 +1,559 @@
 [
   {
-    "name": "Hvilken kamp med Frankrig fra VM 2006 er målet fra?",
-    "startDate": { "$date": 1402005600000 },
-    "endDate"  : { "$date": 1402092000000 },
+    "name": "Hvem taler?",
+    "description": "Gæt en (kendt) dansker",
+    "category": "Første omdgang",
+    "startDate": { "$date": "" },
+    "endDate"  : { "$date": "" },
     "questions":
       [
         {
-          "soundfilePrefix": "QUIZ_VM_2006_FRANKRIG-SPANIEN",
-          "correctAnswer": "A",
-          "alternatives": [
-              {
-                  "name": "A",
-                  "text": "Frankring-Spanien 3-1, 1/8-finale"
-              },
-              {
-                  "name": "B",
-                  "text": "Frankrig-Portugal 1-0, semifinale"
-              },
-              {
-                  "name": "C",
-                  "text": "Frankrig-Sydkorea 1-1, gruppekamp"
-              },
-              {
-                  "name": "D",
-                  "text": "Frankrig-Brasilien 1-0, kvartfinale"
-              },
-              {
-                  "name": "E",
-                  "text": "Frankrig-Togo 2-0, gruppekamp"
-              }
-          ]
-        },
-        {
-          "soundfilePrefix": "QUIZ_VM_2006_FRANKRIG-TOGO",
-          "correctAnswer": "E",
-          "alternatives": [
-              {
-                  "name": "A",
-                  "text": "Frankring-Spanien 3-1, 1/8-finale"
-              },
-              {
-                  "name": "B",
-                  "text": "Frankrig-Portugal 1-0, semifinale"
-              },
-              {
-                  "name": "C",
-                  "text": "Frankrig-Sydkorea 1-1, gruppekamp"
-              },
-              {
-                  "name": "D",
-                  "text": "Frankrig-Brasilien 1-0, kvartfinale"
-              },
-              {
-                  "name": "E",
-                  "text": "Frankrig-Togo 2-0, gruppekamp"
-              }
-          ]
-        },
-        {
-          "soundfilePrefix": "QUIZ-VM_2006_FRANKRIG-BRASILIEN",
+          "soundfilePrefix": "Peter_Brixtofte",
           "correctAnswer": "D",
           "alternatives": [
               {
                   "name": "A",
-                  "text": "Frankring-Spanien 3-1, 1/8-finale"
+                  "text": "Anders Fogh Rasmussen"
               },
               {
                   "name": "B",
-                  "text": "Frankrig-Portugal 1-0, semifinale"
+                  "text": "Helle Thorning Schmidt"
               },
               {
                   "name": "C",
-                  "text": "Frankrig-Sydkorea 1-1, gruppekamp"
+                  "text": "Mette Frederiksen"
               },
               {
                   "name": "D",
-                  "text": "Frankrig-Brasilien 1-0, kvartfinale"
+                  "text": "Peter Brixtofte"
               },
               {
                   "name": "E",
-                  "text": "Frankrig-Togo 2-0, gruppekamp"
+                  "text": "Søren Espersen"
               }
           ]
         },
         {
-          "soundfilePrefix": "QUIZ-VM_2006_FRANKRIG-PORTUGAL",
-          "correctAnswer": "B",
+          "soundfilePrefix": "Anders_Fogh_Rasmussen",
+          "correctAnswer": "E",
           "alternatives": [
               {
                   "name": "A",
-                  "text": "Frankring-Spanien 3-1, 1/8-finale"
+                  "text": "Helle Thorning Schmidt"
               },
               {
                   "name": "B",
-                  "text": "Frankrig-Portugal 1-0, semifinale"
+                  "text": "Mette Frederiksen"
               },
               {
                   "name": "C",
-                  "text": "Frankrig-Sydkorea 1-1, gruppekamp"
+                  "text": "Peter Brixtofte"
               },
               {
                   "name": "D",
-                  "text": "Frankrig-Brasilien 1-0, kvartfinale"
+                  "text": "Søren Espersen"
               },
               {
                   "name": "E",
-                  "text": "Frankrig-Togo 2-0, gruppekamp"
+                  "text": "Anders Fogh Rasmussen"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Soeren_Espersen",
+          "correctAnswer": "C",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Mette Frederiksen"
+              },
+              {
+                  "name": "B",
+                  "text": "Peter Brixtofte"
+              },
+              {
+                  "name": "C",
+                  "text": "Søren Espersen"
+              },
+              {
+                  "name": "D",
+                  "text": "Anders Fogh Rasmussen"
+              },
+              {
+                  "name": "E",
+                  "text": "Helle Thorning Schmidt"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Helle_Thorning_Schmidt",
+          "correctAnswer": "D",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Peter Brixtofte"
+              },
+              {
+                  "name": "B",
+                  "text": "Søren Espersen"
+              },
+              {
+                  "name": "C",
+                  "text": "Anders Fogh Rasmussen"
+              },
+              {
+                  "name": "D",
+                  "text": "Helle Thorning Schmidt"
+              },
+              {
+                  "name": "E",
+                  "text": "Mette Frederiksen"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Mette_Frederiksen",
+          "correctAnswer": "A",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Mette Frederiksen"
+              },
+              {
+                  "name": "B",
+                  "text": "Anders Fogh Rasmussen"
+              },
+              {
+                  "name": "C",
+                  "text": "Helle Thorning Schmidt"
+              },
+              {
+                  "name": "D",
+                  "text": "Søren Espersen"
+              },
+              {
+                  "name": "E",
+                  "text": "Peter Brixtofte"
               }
           ]
         }
       ]
   },
   {
-    "name": "Hvilken VM-kamp med Brasilien er scoringen fra?",
-    "startDate": { "$date": 1402092000000 },
-    "endDate"  : { "$date": 1402178400000 },
+    "name": "Hvem taler?",
+    "description": "Gæt en (kendt) dansker",
+    "category": "Anden omdgang",
+    "startDate": { "$date": "" },
+    "endDate"  : { "$date": "" },
     "questions":
       [
         {
-          "soundfilePrefix": "QUIZ_VM_1970_BRASILIEN-ENGLAND",
-          "correctAnswer": "C",
-          "alternatives": [
-              {
-                  "name": "A",
-                  "text": "VM 1982 Brasilien-Skotland 4-1"
-              },
-              {
-                  "name": "B",
-                  "text": "VM 1974 Brasilien-Zaire 3-0"
-              },
-              {
-                  "name": "C",
-                  "text": "VM 1970 Brasilien-England 1-0"
-              },
-              {
-                  "name": "D",
-                  "text": "VM 1986 Brasilien-Spanien 1-0"
-              },
-              {
-                  "name": "E",
-                  "text": "VM 1978 Brasilien-Sverige 1-1"
-              }
-          ]
-        },
-        {
-          "soundfilePrefix": "QUIZ_VM_1974_BRASILIEN-ZAIRE",
+          "soundfilePrefix": "P1_Morgen_20140910_Morten_Messerschmidt",
           "correctAnswer": "B",
           "alternatives": [
               {
                   "name": "A",
-                  "text": "VM 1982 Brasilien-Skotland 4-1"
+                  "text": "Magrethe Vesterager"
               },
               {
                   "name": "B",
-                  "text": "VM 1974 Brasilien-Zaire 3-0"
+                  "text": "Morten Messerschmidt"
               },
               {
                   "name": "C",
-                  "text": "VM 1970 Brasilien-England 1-0"
+                  "text": "Clemens Kjersgaard"
               },
               {
                   "name": "D",
-                  "text": "VM 1986 Brasilien-Spanien 1-0"
+                  "text": "Kim Schumacher"
               },
               {
                   "name": "E",
-                  "text": "VM 1978 Brasilien-Sverige 1-1"
+                  "text": "Otto Leisner"
               }
           ]
         },
         {
-          "soundfilePrefix": "QUIZ_VM_1982_BRASILIEN-SKOTLAND",
-          "correctAnswer": "A",
+          "soundfilePrefix": "Ring_til_regeringen_Margrethe_Vestager",
+          "correctAnswer": "D",
           "alternatives": [
               {
                   "name": "A",
-                  "text": "VM 1982 Brasilien-Skotland 4-1"
+                  "text": "Clemens Kjersgaard"
               },
               {
                   "name": "B",
-                  "text": "VM 1974 Brasilien-Zaire 3-0"
+                  "text": "Kim Schumacher"
               },
               {
                   "name": "C",
-                  "text": "VM 1970 Brasilien-England 1-0"
+                  "text": "Magrethe Vesterager"
               },
               {
                   "name": "D",
-                  "text": "VM 1986 Brasilien-Spanien 1-0"
+                  "text": "Otto Leisner"
               },
               {
                   "name": "E",
-                  "text": "VM 1978 Brasilien-Sverige 1-1"
+                  "text": "Morten Messerschmidt"
               }
           ]
         },
         {
-          "soundfilePrefix": "QUIZ_VM_1978_BRASILIEN-SVERIGE",
+          "soundfilePrefix": "Clemens_Kjersgaard",
           "correctAnswer": "E",
           "alternatives": [
               {
                   "name": "A",
-                  "text": "VM 1982 Brasilien-Skotland 4-1"
+                  "text": "Kim Schumacher"
               },
               {
                   "name": "B",
-                  "text": "VM 1974 Brasilien-Zaire 3-0"
+                  "text": "Morten Messerschmidt"
               },
               {
                   "name": "C",
-                  "text": "VM 1970 Brasilien-England 1-0"
+                  "text": "Otto Leisner"
               },
               {
                   "name": "D",
-                  "text": "VM 1986 Brasilien-Spanien 1-0"
+                  "text": "Magrethe Vesterager"
               },
               {
                   "name": "E",
-                  "text": "VM 1978 Brasilien-Sverige 1-1"
+                  "text": "Clemens Kjersgaard"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "kim_SCHUMACHER",
+          "correctAnswer": "E",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Otto Leisner"
+              },
+              {
+                  "name": "B",
+                  "text": "Magrethe Vesterager"
+              },
+              {
+                  "name": "C",
+                  "text": "Morten Messerschmidt"
+              },
+              {
+                  "name": "D",
+                  "text": "Clemens Kjersgaard"
+              },
+              {
+                  "name": "E",
+                  "text": "Kim Schumacher"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "OTTO_LEISNER",
+          "correctAnswer": "D",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Kim Schumacher"
+              },
+              {
+                  "name": "B",
+                  "text": "Clemens Kjersgaard"
+              },
+              {
+                  "name": "C",
+                  "text": "Morten Messerschmidt"
+              },
+              {
+                  "name": "D",
+                  "text": "Otto Leisner"
+              },
+              {
+                  "name": "E",
+                  "text": "Magrethe Vesterager"
+              }
+          ]
+        }
+      ]
+  },
+  {
+    "name": "Hvem taler?",
+    "description": "Gæt en (kendt) dansker",
+    "category": "Tredje omdgang",
+    "startDate": { "$date": "" },
+    "endDate"  : { "$date": "" },
+    "questions":
+      [
+        {
+          "soundfilePrefix": "poul_neesgaard",
+          "correctAnswer": "C",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Naser Khader"
+              },
+              {
+                  "name": "B",
+                  "text": "Mikael Bertelsen"
+              },
+              {
+                  "name": "C",
+                  "text": "Poul Neesgaard"
+              },
+              {
+                  "name": "D",
+                  "text": "Thomas Winding"
+              },
+              {
+                  "name": "E",
+                  "text": "Uffe Buchard"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Religionsrapport_20140819_Naser_Khader",
+          "correctAnswer": "B",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Mikael Bertelsen"
+              },
+              {
+                  "name": "B",
+                  "text": "Naser Khader"
+              },
+              {
+                  "name": "C",
+                  "text": "Thomas Winding"
+              },
+              {
+                  "name": "D",
+                  "text": "Uffe Buchard"
+              },
+              {
+                  "name": "E",
+                  "text": "Poul Neesgaard"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Skjoldhoej_Arkivet_Mikael_Bertelsen",
+          "correctAnswer": "E",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Poul Neesgaard"
+              },
+              {
+                  "name": "B",
+                  "text": "Uffe Buchard"
+              },
+              {
+                  "name": "C",
+                  "text": "Thomas Winding"
+              },
+              {
+                  "name": "D",
+                  "text": "Naser Khader"
+              },
+              {
+                  "name": "E",
+                  "text": "Mikael Bertelsen"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Thomas_Winding",
+          "correctAnswer": "B",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Uffe Buchard"
+              },
+              {
+                  "name": "B",
+                  "text": "Thomas Winding"
+              },
+              {
+                  "name": "C",
+                  "text": "Naser Khader"
+              },
+              {
+                  "name": "D",
+                  "text": "Poul Neesgaard"
+              },
+              {
+                  "name": "E",
+                  "text": "Mikael Bertelsen"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Uffe_Buchard",
+          "correctAnswer": "D",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Thomas Winding"
+              },
+              {
+                  "name": "B",
+                  "text": "Poul Neesgaard"
+              },
+              {
+                  "name": "C",
+                  "text": "Mikael Bertelsen"
+              },
+              {
+                  "name": "D",
+                  "text": "Uffe Buchard"
+              },
+              {
+                  "name": "E",
+                  "text": "Naser Khader"
+              }
+          ]
+        }
+      ]
+  },
+  {
+    "name": "Hvem taler?",
+    "description": "Gæt en (kendt) dansker",
+    "category": "Fjerde omdgang",
+    "startDate": { "$date": "" },
+    "endDate"  : { "$date": "" },
+    "questions":
+      [
+        {
+          "soundfilePrefix": "KLAUS_RIFBJERG",
+          "correctAnswer": "D",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Vily Søvndal"
+              },
+              {
+                  "name": "B",
+                  "text": "Nicolas Bro"
+              },
+              {
+                  "name": "C",
+                  "text": "Mikael Wulff"
+              },
+              {
+                  "name": "D",
+                  "text": "Klaus Rifbjerg"
+              },
+              {
+                  "name": "E",
+                  "text": "Niels Hausgaard"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Mikael_Wulff",
+          "correctAnswer": "A",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Mikael Wulff"
+              },
+              {
+                  "name": "B",
+                  "text": "Niels Hausgaard"
+              },
+              {
+                  "name": "C",
+                  "text": "Vily Søvndal"
+              },
+              {
+                  "name": "D",
+                  "text": "Klaus Rifbjerg"
+              },
+              {
+                  "name": "E",
+                  "text": "Nicolas Bro"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Nicolas_Bro",
+          "correctAnswer": "A",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Nicolas Bro"
+              },
+              {
+                  "name": "B",
+                  "text": "Mikael Wulff"
+              },
+              {
+                  "name": "C",
+                  "text": "Klaus Rifbjerg"
+              },
+              {
+                  "name": "D",
+                  "text": "Vily Søvndal"
+              },
+              {
+                  "name": "E",
+                  "text": "Niels Hausgaard"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Niels_Hausgaard",
+          "correctAnswer": "D",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Klaus Rifbjerg"
+              },
+              {
+                  "name": "B",
+                  "text": "Vily Søvndal"
+              },
+              {
+                  "name": "C",
+                  "text": "Nicolas Bro"
+              },
+              {
+                  "name": "D",
+                  "text": "Niels Hausgaard"
+              },
+              {
+                  "name": "E",
+                  "text": "Mikael Wulff"
+              }
+          ]
+        },
+        {
+          "soundfilePrefix": "Villy_Soevndal",
+          "correctAnswer": "C",
+          "alternatives": [
+              {
+                  "name": "A",
+                  "text": "Niels Hausgaard"
+              },
+              {
+                  "name": "B",
+                  "text": "Klaus Rifbjerg"
+              },
+              {
+                  "name": "C",
+                  "text": "Vily Søvndal"
+              },
+              {
+                  "name": "D",
+                  "text": "Mikael Wulff"
+              },
+              {
+                  "name": "E",
+                  "text": "Nicolas Bro"
               }
           ]
         }
