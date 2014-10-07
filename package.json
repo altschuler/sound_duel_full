@@ -15,6 +15,6 @@
     "grunt-webdriver": "^0.4.0"
   },
   "dependencies": {
-    "phantomjs": "^1.9.7-8"
+    "node-ffprobe": "^1.2.2"
   }
 }

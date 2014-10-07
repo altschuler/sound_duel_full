@@ -113,16 +113,28 @@ Meteor.methods
     # calculate score
     score = 0
     correctAnswers = 0
-    for a in game.answers
-      q = Questions.findOne a.questionId
-      if a.answer is q.correctAnswer
+
+    for answer in game.answers
+      question = Questions.findOne answer.questionId
+      sound = Sounds.findOne question.soundId
+
+      if answer.answer is question.correctAnswer
+        diff = (answer.endTime - answer.startTime) / 1000
+
+        if diff == 0
+          points = CONFIG.POINTS_PER_QUESTION
+        else if diff >= sound.duration
+          points = 0
+        else
+          points = (1 - (diff / sound.duration)) * CONFIG.POINTS_PER_QUESTION
+
         correctAnswers++
-        score += a.points
+        score += points
 
     # mark game as finished
     Games.update gameId, $set:
       state: 'finished'
-      score: score
+      score: parseInt(score)
       correctAnswers: correctAnswers
 
     # add highscore

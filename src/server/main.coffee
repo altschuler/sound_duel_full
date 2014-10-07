@@ -1,6 +1,8 @@
 # src/server/main.coffee
 
 fs = Npm.require 'fs'
+Future = Npm.require 'fibers/future'
+probe = Meteor.require 'node-ffprobe'
 
 # methods
 
@@ -28,18 +30,35 @@ refreshDb = ->
 
     # Insert questions from quiz as separate question objects in database
     questionIds = []
+
     for question in quiz.questions
 
-      # find associated segments
-      segments = audioFiles.filter (file) ->
+      # find associated segment
+      segment = audioFiles.filter( (file) ->
         ~file.indexOf(question.soundfilePrefix)
+      ).pop()
 
-      soundId = Sounds.insert segments: segments
+      console.log segment
+
+      # get duration of segment
+      fut = new Future()
+      probe "#{CONFIG.ASSETS_DIR}/#{segment}", (err, data) ->
+        if err?
+          console.log err
+        else
+          fut['return'] data.format.duration
+
+      duration = fut.wait()
+
+      # insert sound document
+      soundId = Sounds.insert
+        segment: segment
+        duration: duration
       question.soundId = soundId
 
       # insert question into databse
-      questionId = Questions.insert(question)
-      questionIds.push(questionId)
+      questionId = Questions.insert question
+      questionIds.push questionId
 
     # Replace the 'questions' property with the property 'questionIds' that
     # references the questions ID in the MongoDB
@@ -53,26 +72,8 @@ refreshDb = ->
   console.log "#Questions: #{Questions.find().count()}"
   console.log "#Sounds: #{audioFiles.length}"
 
-# update players to idle with keepalive
-# and remove long idling players
-keepaliveLoop = ->
-  Meteor.setInterval( ->
-    now = (new Date()).getTime()
-    threshold = now - CONFIG.ONLINE_TRESHOLD
-
-    # set players to idle
-    Meteor.users.update lastKeepalive: { $lt: threshold },
-      $set: { online: false }
-
-  , CONFIG.ONLINE_TRESHOLD)
-
 
 Meteor.methods
-  keepalive: (playerId) ->
-    Meteor.users.update playerId, $set:
-      online: true
-      lastKeepalive: (new Date()).getTime()
-
   sendEmail: (options) ->
     check([options.to, options.subject, options.html], [String])
 
@@ -89,4 +90,3 @@ Meteor.methods
 
 Meteor.startup ->
   refreshDb()
-  keepaliveLoop()
