@@ -6,5 +6,8 @@ node_modules
 
 .vagrant/
 /.tern-port
+*.swp
+
+# secret
 /config.json
 /src/server/config.coffee
