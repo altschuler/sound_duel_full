@@ -38,8 +38,6 @@ refreshDb = ->
         ~file.indexOf(question.soundfilePrefix)
       ).pop()
 
-      console.log segment
-
       # get duration of segment
       fut = new Future()
       probe "#{CONFIG.ASSETS_DIR}/#{segment}", (err, data) ->
