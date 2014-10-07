@@ -123,13 +123,8 @@ audio.asset, .assets {
   display: none;
 }
 
-[data-sd-quiz-progressbar] {
-  display: none;
-}
-
 #alternative-container {
   margin: 14px;
-  display: none;
 }
 
 @countdown-normal-from: 15em;
@@ -152,9 +147,7 @@ audio.asset, .assets {
   to   { font-size: @countdown-normal-to; }
 }
 
-.sound-duel-countdown {
-  display: none;
-
+.countdown {
   // Speed up animations on iPhone and Android (force GPU acceleration)
   // See: http://chrissilich.com/blog/fix-css-animation-slow-or-choppy-in-mobile-browsers/
   -webkit-transform: translateZ(0);
@@ -191,7 +184,7 @@ audio.asset, .assets {
   to   { font-size: @countdown-smaller-to; }
 }
 
-.sound-duel-countdown.smaller {
+.countdown.smaller {
   -webkit-animation : countdown-animation-smaller 1s ease 1;
   -moz-animation    : countdown-animation-smaller 1s ease 1;
   -o-animation      : countdown-animation-smaller 1s ease 1;
