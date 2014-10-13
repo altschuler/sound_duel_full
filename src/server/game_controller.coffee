@@ -2,9 +2,12 @@
 
 # helpers
 
-insertGame = (playerId) ->
+insertGame = (playerId, { quizId }) ->
   # random quiz
-  quiz = @randomFromCollection Quizzes
+  quiz = if quizId
+    Quizzes.findOne quizId
+  else
+    @randomFromCollection Quizzes
 
   Games.insert
     playerId:          playerId
@@ -55,7 +58,8 @@ notifyChallenge = (gameId)->
 
 Meteor.methods
 
-  newGame: (playerId, {challengeeId, acceptChallengeId, challengeeEmail}) ->
+  newGame: (playerId,
+      {challengeeId, acceptChallengeId, challengeeEmail, quizId}) ->
     unless Meteor.users.find(playerId).count() is 1
       throw new Meteor.Error 'player not found'
     # cannot challenge and answer challenge at the same time
@@ -75,7 +79,8 @@ Meteor.methods
         Games.update game._id, $set: { playerId: playerId }
     # else, create new game
     else
-      gameId = insertGame(playerId)
+      quizParam = if quizId then quizId: quizId else {}
+      gameId = insertGame playerId, quizParam
       challengeId = null
 
     # if challenging, create new game for challengee
