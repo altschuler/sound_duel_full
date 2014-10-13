@@ -10,6 +10,7 @@
         {
           "soundfilePrefix": "Peter_Brixtofte",
           "correctAnswer": "D",
+          "hasFreeText": true,
           "alternatives": [
               {
                   "name": "A",
@@ -36,6 +37,7 @@
         {
           "soundfilePrefix": "Anders_Fogh_Rasmussen",
           "correctAnswer": "E",
+          "hasFreeText": false,
           "alternatives": [
               {
                   "name": "A",
@@ -62,32 +64,13 @@
         {
           "soundfilePrefix": "Soeren_Espersen",
           "correctAnswer": "C",
-          "alternatives": [
-              {
-                  "name": "A",
-                  "text": "Mette Frederiksen"
-              },
-              {
-                  "name": "B",
-                  "text": "Peter Brixtofte"
-              },
-              {
-                  "name": "C",
-                  "text": "Søren Espersen"
-              },
-              {
-                  "name": "D",
-                  "text": "Anders Fogh Rasmussen"
-              },
-              {
-                  "name": "E",
-                  "text": "Helle Thorning Schmidt"
-              }
-          ]
+          "hasFreeText": true,
+          "alternatives": []
         },
         {
           "soundfilePrefix": "Helle_Thorning_Schmidt",
           "correctAnswer": "D",
+          "hasFreeText": false,
           "alternatives": [
               {
                   "name": "A",
@@ -114,6 +97,7 @@
         {
           "soundfilePrefix": "Mette_Frederiksen",
           "correctAnswer": "A",
+          "hasFreeText": false,
           "alternatives": [
               {
                   "name": "A",
@@ -150,6 +134,7 @@
         {
           "soundfilePrefix": "P1_Morgen_20140910_Morten_Messerschmidt",
           "correctAnswer": "B",
+          "hasFreeText": true,
           "alternatives": [
               {
                   "name": "A",
@@ -176,6 +161,7 @@
         {
           "soundfilePrefix": "Ring_til_regeringen_Margrethe_Vestager",
           "correctAnswer": "D",
+          "hasFreeText": false,
           "alternatives": [
               {
                   "name": "A",
@@ -202,32 +188,13 @@
         {
           "soundfilePrefix": "Clemens_Kjersgaard",
           "correctAnswer": "E",
-          "alternatives": [
-              {
-                  "name": "A",
-                  "text": "Kim Schumacher"
-              },
-              {
-                  "name": "B",
-                  "text": "Morten Messerschmidt"
-              },
-              {
-                  "name": "C",
-                  "text": "Otto Leisner"
-              },
-              {
-                  "name": "D",
-                  "text": "Magrethe Vesterager"
-              },
-              {
-                  "name": "E",
-                  "text": "Clemens Kjersgaard"
-              }
-          ]
+          "hasFreeText": true,
+          "alternatives": []
         },
         {
           "soundfilePrefix": "kim_SCHUMACHER",
           "correctAnswer": "E",
+          "hasFreeText": false,
           "alternatives": [
               {
                   "name": "A",
@@ -254,6 +221,7 @@
         {
           "soundfilePrefix": "OTTO_LEISNER",
           "correctAnswer": "D",
+          "hasFreeText": true,
           "alternatives": [
               {
                   "name": "A",
@@ -290,6 +258,7 @@
         {
           "soundfilePrefix": "poul_neesgaard",
           "correctAnswer": "C",
+          "hasFreeText": true,
           "alternatives": [
               {
                   "name": "A",
@@ -316,6 +285,7 @@
         {
           "soundfilePrefix": "Religionsrapport_20140819_Naser_Khader",
           "correctAnswer": "B",
+          "hasFreeText": false,
           "alternatives": [
               {
                   "name": "A",
@@ -342,32 +312,13 @@
         {
           "soundfilePrefix": "Skjoldhoej_Arkivet_Mikael_Bertelsen",
           "correctAnswer": "E",
-          "alternatives": [
-              {
-                  "name": "A",
-                  "text": "Poul Neesgaard"
-              },
-              {
-                  "name": "B",
-                  "text": "Uffe Buchard"
-              },
-              {
-                  "name": "C",
-                  "text": "Thomas Winding"
-              },
-              {
-                  "name": "D",
-                  "text": "Naser Khader"
-              },
-              {
-                  "name": "E",
-                  "text": "Mikael Bertelsen"
-              }
-          ]
+          "hasFreeText": true,
+          "alternatives": []
         },
         {
           "soundfilePrefix": "Thomas_Winding",
           "correctAnswer": "B",
+          "hasFreeText": false,
           "alternatives": [
               {
                   "name": "A",
@@ -394,6 +345,7 @@
         {
           "soundfilePrefix": "Uffe_Buchard",
           "correctAnswer": "D",
+          "hasFreeText": true,
           "alternatives": [
               {
                   "name": "A",
@@ -430,6 +382,7 @@
         {
           "soundfilePrefix": "KLAUS_RIFBJERG",
           "correctAnswer": "D",
+          "hasFreeText": true,
           "alternatives": [
               {
                   "name": "A",
@@ -456,6 +409,7 @@
         {
           "soundfilePrefix": "Mikael_Wulff",
           "correctAnswer": "A",
+          "hasFreeText": false,
           "alternatives": [
               {
                   "name": "A",
@@ -482,32 +436,13 @@
         {
           "soundfilePrefix": "Nicolas_Bro",
           "correctAnswer": "A",
-          "alternatives": [
-              {
-                  "name": "A",
-                  "text": "Nicolas Bro"
-              },
-              {
-                  "name": "B",
-                  "text": "Mikael Wulff"
-              },
-              {
-                  "name": "C",
-                  "text": "Klaus Rifbjerg"
-              },
-              {
-                  "name": "D",
-                  "text": "Vily Søvndal"
-              },
-              {
-                  "name": "E",
-                  "text": "Niels Hausgaard"
-              }
-          ]
+          "hasFreeText": true,
+          "alternatives": []
         },
         {
           "soundfilePrefix": "Niels_Hausgaard",
           "correctAnswer": "D",
+          "hasFreeText": false,
           "alternatives": [
               {
                   "name": "A",
@@ -534,6 +469,7 @@
         {
           "soundfilePrefix": "Villy_Soevndal",
           "correctAnswer": "C",
+          "hasFreeText": true,
           "alternatives": [
               {
                   "name": "A",

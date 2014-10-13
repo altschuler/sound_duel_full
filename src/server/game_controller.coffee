@@ -115,6 +115,8 @@ Meteor.methods
     correctAnswers = 0
 
     for answer in game.answers
+      if answer.isFree then continue
+
       question = Questions.findOne answer.questionId
       sound = Sounds.findOne question.soundId
 
@@ -134,7 +136,7 @@ Meteor.methods
     # mark game as finished
     Games.update gameId, $set:
       state: 'finished'
-      score: parseInt(score)
+      score: parseInt score, 10
       correctAnswers: correctAnswers
 
     # add highscore
@@ -163,7 +165,7 @@ Meteor.methods
           questionId: quiz.questionIds[game.currentQuestion]
           startTime: (new Date()).getTime()
 
-  stopQuestion: (gameId, alternative) ->
+  stopQuestion: (gameId, alternative, isFree) ->
     game = Games.findOne gameId
     unless game?
       throw new Meteor.Error 404, "Game not found"
@@ -172,6 +174,7 @@ Meteor.methods
 
     answer.endTime = (new Date()).getTime()
     answer.answer = alternative
+    answer.isFree = isFree
 
     Games.update { _id: gameId, 'answers.questionId': answer.questionId } ,
       $set: { 'answers.$': answer }
