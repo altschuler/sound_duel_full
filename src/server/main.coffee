@@ -50,7 +50,7 @@ refreshDb = ->
 
       # insert sound document
       soundId = Sounds.insert
-        segment: segment
+        segment: segment.replace '.mp3', ''
         duration: duration
       question.soundId = soundId
 
