@@ -2,7 +2,7 @@
 
 # helpers
 
-insertGame = (playerId, { quizId }) ->
+insertGame = (playerId, quizId) ->
   # random quiz
   quiz = if quizId
     Quizzes.findOne quizId
@@ -79,8 +79,7 @@ Meteor.methods
         Games.update game._id, $set: { playerId: playerId }
     # else, create new game
     else
-      quizParam = if quizId then quizId: quizId else {}
-      gameId = insertGame playerId, quizParam
+      gameId = insertGame playerId, quizId
       challengeId = null
 
     # if challenging, create new game for challengee
@@ -95,7 +94,7 @@ Meteor.methods
       if challengee and playerId is challengee._id
         throw new Meteor.Error 'cannot challenge yourself'
 
-      challengeeGameId = insertGame(challengeeId)
+      challengeeGameId = insertGame challengeeId
 
       challengeId = insertChallenge
         playerId: playerId
